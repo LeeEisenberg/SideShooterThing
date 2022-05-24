@@ -1,7 +1,7 @@
-SpaceShip ship;
+Player ship;
 void setup() {
   size(800, 800);
-  ship = new SpaceShip();
+  ship = new Player();
 }
 
 void draw() {
@@ -11,15 +11,31 @@ void draw() {
 
 void keyPressed() {
   if(key == 'w') {
-    ship.move(0, -5);
+    ship.moveUp(true);
   }
   if(key == 's') {
-    ship.move(0, 5);
+    ship.moveDown(true);
   }
   if(key == 'a') {
-    ship.move(-5, 0);
+    ship.moveLeft(true);
   }
   if(key == 'd') {
-    ship.move(5, 0);
+    ship.moveRight(true);
+  }
+  ship.move();
+}
+
+void keyReleased() {
+  if(key == 'w') {
+    ship.moveUp(false);
+  }
+  if(key == 's') {
+    ship.moveDown(false);
+  }
+  if(key == 'a') {
+    ship.moveLeft(false);
+  }
+  if(key == 'd') {
+    ship.moveRight(false);
   }
 }
