@@ -7,35 +7,33 @@ void setup() {
 void draw() {
   background(110);
   ship.display();
+  ship.move(up, down, left, right);
+  ship.move();
 }
+boolean up, down, left, right;
 
 void keyPressed() {
-  if(key == 'w') {
-    ship.moveUp(true);
-  }
-  if(key == 's') {
-    ship.moveDown(true);
-  }
-  if(key == 'a') {
-    ship.moveLeft(true);
-  }
-  if(key == 'd') {
-    ship.moveRight(true);
-  }
-  ship.move();
+  setDir(key, true);
 }
 
 void keyReleased() {
-  if(key == 'w') {
-    ship.moveUp(false);
-  }
-  if(key == 's') {
-    ship.moveDown(false);
-  }
-  if(key == 'a') {
-    ship.moveLeft(false);
-  }
-  if(key == 'd') {
-    ship.moveRight(false);
+  setDir(key, false);
+}
+
+void setDir(char k, boolean bool) {
+  switch (k) {
+    case 'w':
+      up = bool;
+      ship.moveUp(true);
+      break;
+    case 'a':
+      left = bool;
+      break;
+    case 's':
+      down = bool;
+      break;
+    case 'd':
+      right = bool;
+      break;
   }
 }
