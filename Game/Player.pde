@@ -10,42 +10,32 @@ public class Player extends SpaceShip {
     basedX = 6.66;
     basedY = 6.66;
   }
-  void moveUp(boolean up) {
-    if(up) {
-      dY = -basedY;
-    }else {
-      dY = 0;
-    }
-  }
-  void moveDown(boolean down) {
-    if(down) {
-      dY = basedY;
-    }else {
-      dY = 0;
-    }
-  }
-  void moveRight(boolean right) {
-    if(right) {
-      dX = basedX;
-    }else {
-      dX = 0;
-    }  
-  }
-  
-  void moveLeft(boolean left) {
-    if(left) {
-      dX = -basedX;
-    }else {
-      dX = 0;
-    }
-  }
+ 
   void move() {
     move(dX, dY);
   }
+  void display() {
+    super.display();
+    move();
+  }
   void move(boolean up, boolean down, boolean left, boolean right) {
-    moveUp(up);
-    moveDown(down);
-    moveLeft(left);
-    moveRight(right);
+    if(up) {
+      dY = -basedY;
+    }
+    if(down) {
+      dY = basedY;
+    }
+    if(right) {
+      dX = basedX;
+    }
+    if(left) {
+      dX = -basedX;
+    }
+    if(!up && !down) {
+      dY = 0;
+    }
+    if(!left && !right) {
+      dX = 0;
+    }
   }
 }

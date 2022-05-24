@@ -6,25 +6,30 @@ void setup() {
 
 void draw() {
   background(110);
-  ship.display();
+  
   ship.move(up, down, left, right);
-  ship.move();
+  ship.display();
+  println("w: "+up);
+  println("a: "+left);
+  println("s: "+down);
+  println("d: "+right);
+  println(ship.dX);
+  println(ship.dY);
 }
 boolean up, down, left, right;
 
 void keyPressed() {
   setDir(key, true);
-}
+} 
 
 void keyReleased() {
   setDir(key, false);
 }
 
-void setDir(char k, boolean bool) {
+void setDir(int k, boolean bool) {
   switch (k) {
     case 'w':
       up = bool;
-      ship.moveUp(true);
       break;
     case 'a':
       left = bool;
