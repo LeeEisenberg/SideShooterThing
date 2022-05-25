@@ -15,6 +15,14 @@ void draw(){
     wave = new EnemyWave();//check this later
   }
   for (SpaceShip s : wave.fleet){
+    s.move();
+    s.fire();//make this shoot less often
+  }
+  for (Projectile p : projectiles){
+    p.move();
+    p.hitDetec();
+  }
+  for (SpaceShip s : wave.fleet){
     s.render();
   }
   for (Projectile p : projectiles){
