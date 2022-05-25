@@ -1,5 +1,8 @@
 public class SpaceShip {
-   float[] coords;
+   private float[] coords;
+   public float HP;
+   private Weapon weapon;
+   private ArrayList<Powerup> drops = new ArrayList<Powerup>();
    public SpaceShip() {
      coords = new float[]{0, 0};
    }
@@ -11,4 +14,5 @@ public class SpaceShip {
      rectMode(CENTER);
      square(coords[0], coords[1], 100);
    }
+   boolean isHit() {}
 }
