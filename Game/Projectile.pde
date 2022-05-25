@@ -13,11 +13,11 @@ public class Projectile{
     size = 10;
     xPos = 200;
     yPos = 200;
-    dX = 10;
-    dY = 50;
+    dX = 1;
+    dY = 5;
     damage = 10;
     type = 0;
-    hue = new color(255);
+    hue = color(255);
     friendly = true;
   }
   
