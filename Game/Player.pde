@@ -1,5 +1,5 @@
 public class Player extends SpaceShip {
-  private float basedX, basedY, dY, dX,
+  private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
   public Player() {
     super();
