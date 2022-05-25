@@ -8,7 +8,7 @@ void draw() {
   background(110);
   
   ship.move(ship.up, ship.down, ship.left, ship.right);
-  ship.display();
+  ship.render();
   println(ship.dX);
   println(ship.dY);
 }

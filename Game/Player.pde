@@ -13,13 +13,17 @@ public class Player extends SpaceShip {
     dY = 0;
     basedX = 6.66;
     basedY = 6.66;
+    up = false;
+    down = false;
+    left = false;
+    right = false;
   }
  
   void move() {
     move(dX, dY);
   }
-  void display() {
-    super.display();
+  void render() {
+    super.render();
     move();
   }
   void move(boolean up, boolean down, boolean left, boolean right) {

@@ -7,7 +7,7 @@ public class SpaceShip {
      coords[0] = coords[0]+x;
      coords[1] = coords[1]+y;
    }
-   void display() {
+   void render() {
      rectMode(CENTER);
      square(coords[0], coords[1], 100);
    }
