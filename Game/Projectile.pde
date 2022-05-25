@@ -25,4 +25,8 @@ public class Projectile{
     xPos += dX;
     yPos += dY;
   }
+  public void render(){
+    fill(hue);
+    circle(xPos, yPos, size);
+  }
 }
