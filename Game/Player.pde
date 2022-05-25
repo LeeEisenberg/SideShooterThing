@@ -3,6 +3,10 @@ public class Player extends SpaceShip {
   private float basedY;
   private float dX;
   private float dY;
+  public boolean up;
+  public boolean down;
+  public boolean left;
+  public boolean right;
   public Player() {
     super();
     dX = 0;
@@ -38,4 +42,20 @@ public class Player extends SpaceShip {
       dX = 0;
     }
   }
+  void setDir(int k, boolean bool) {
+  switch (k) {
+    case 'w':
+      up = bool;
+      break;
+    case 'a':
+      left = bool;
+      break;
+    case 's':
+      down = bool;
+      break;
+    case 'd':
+      right = bool;
+      break;
+  }
+}
 }
