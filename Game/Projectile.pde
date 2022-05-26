@@ -20,6 +20,11 @@ public class Projectile{
     hue = color(255);
     friendly = true;
   }
+  public Projectile(int size, float x, float y, float dX, float dY, int damage) {
+    this.size = size;
+    xPos = x;
+    yPos = y;
+  }
   
   public void move(){
     xPos += dX;
