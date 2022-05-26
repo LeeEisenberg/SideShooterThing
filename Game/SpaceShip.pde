@@ -19,11 +19,11 @@ public class SpaceShip {
      isHit();
    }
    void isHit() {
-     for(int i = 0; i < bullets.size(); i++) {
-       Projectile b = bullets.get(i);
+     for(int i = 0; i < projectiles.size(); i++) {
+       Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
          HP -= b.damage;
-         bullets.remove(b);
+         projectiles.remove(b);
        }
      }
    }

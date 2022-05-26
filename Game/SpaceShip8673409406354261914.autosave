@@ -1,0 +1,19 @@
+public class SpaceShip {
+   private float x,y;
+   public float HP;
+   private Weapon weapon;
+   private ArrayList<Powerup> drops = new ArrayList<Powerup>();
+   public float size;
+   public SpaceShip() {
+     coords = new float[]{0, 0};
+   }
+   void move(float x_, float y_) {
+     x += x_;
+     y += y_;
+   }
+   void render() {
+     rectMode(CENTER);
+     square(x, y, 100);
+   }
+   boolean isHit() {}
+}
