@@ -29,3 +29,11 @@ void draw(){
     p.render();
   }
  }
+ 
+void keyPressed() {
+  ship.setDir(key, true);
+} 
+
+void keyReleased() {
+  ship.setDir(key, false);
+}
