@@ -14,7 +14,9 @@ void draw() {
   
   ship.move(ship.up, ship.down, ship.left, ship.right);
   ship.render();
-  bullet.render();
+  for(Projectile b: bullets) {
+    b.render();
+  }
   println();
   println(ship.HP);
   println();
