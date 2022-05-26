@@ -1,3 +1,3 @@
 public class Weapon {
-  private Projectile[]
+  private Projectile[] ammo;
 }

@@ -14,5 +14,5 @@ public class SpaceShip {
      rectMode(CENTER);
      square(coords[0], coords[1], 100);
    }
-   boolean isHit() {}
+   void isHit() {}
 }

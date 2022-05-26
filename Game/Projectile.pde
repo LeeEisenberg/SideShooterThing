@@ -24,6 +24,12 @@ public class Projectile{
     this.size = size;
     xPos = x;
     yPos = y;
+    this.dX = dX;
+    this.dY = dY;
+    this.damage = damage;
+    type = 0;
+    friendly = false;
+    hue = color(255);
   }
   
   public void move(){
