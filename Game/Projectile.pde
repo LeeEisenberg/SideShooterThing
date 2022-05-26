@@ -39,12 +39,4 @@ public class Projectile{
     fill(hue);
     circle(xPos, yPos, size);
   }
-  public void hitDetec(){
-    for (SpaceShip s : Game.wave.fleet){
-      if (dist(s.xPos, s.yPos, xPos, yPos) < (size+s.size)/2){//make sure the size variables match this usage
-        size = 0; //make sure to detect size 0 for deletion in Game class
-        s.HP -= damage;
-      }
-    }
-  }
 }

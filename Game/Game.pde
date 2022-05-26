@@ -14,15 +14,15 @@ void draw(){
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     wave = new EnemyWave();//check this later
   }
-  for (Projectile p : projectiles){
-    p.move();
+  for (int x = 0; x < projectiles.size(); x++){
+    projectiles.get(x).move();
   }
-  fleet.move();
-  for (SpaceShip s : wave.fleet){
-    s.render();
+  wave.move();
+  for (int x = 0; x < wave.fleet.size(); x++){
+    wave.fleet.get(x).render();
   }
-  for (Projectile p : projectiles){
-    p.render();
+  for (int x = 0; x < projectiles.size(); x++){
+    projectiles.get(x).render();
   }
  }
  
