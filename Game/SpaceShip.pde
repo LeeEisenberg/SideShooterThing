@@ -1,18 +1,30 @@
 public class SpaceShip {
-   private float[] coords;
+   private float x, y;
    public float HP;
+   private float size;
    private Weapon weapon;
    private ArrayList<Powerup> drops = new ArrayList<Powerup>();
    public SpaceShip() {
-     coords = new float[]{0, 0};
+     x = 0;
+     y = 0;
+     size = 100;
+     HP = 100;
    }
-   void move(float x, float y) {
-     coords[0] = coords[0]+x;
-     coords[1] = coords[1]+y;
+   void move(float x_, float y_) {
+     x = x_+x;
+     y = y_+y;
    }
    void render() {
-     rectMode(CENTER);
-     square(coords[0], coords[1], 100);
+     circle(x, y, size);
+     isHit();
    }
-   boolean isHit() {}
+   void isHit() {
+     for(int i = 0; i < projectiles.size(); i++) {
+       Projectile b = projectiles.get(i);
+       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+         HP -= b.damage;
+         projectiles.remove(b);
+       }
+     }
+   }
 }
