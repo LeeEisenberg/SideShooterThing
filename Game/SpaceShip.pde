@@ -10,7 +10,12 @@ public class SpaceShip {
      size = 100;
      HP = 100;
    }
-   public SpaceShip(float x_, float y_, ){
+   public SpaceShip(float x_, float y_, float HP_, float size_){
+     x = x_;
+     y = y_;
+     HP = HP_;
+     size = size_;
+   }
      
    void move(float x_, float y_) {
      x = x_+x;
