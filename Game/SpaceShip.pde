@@ -1,9 +1,9 @@
 public class SpaceShip {
-   private float x, y;
+   protected float x, y;
    public float HP;
-   private float size;
-   private Weapon weapon;
-   private ArrayList<Powerup> drops = new ArrayList<Powerup>();
+   protected float size;
+   protected Weapon weapon;
+   protected ArrayList<Powerup> drops = new ArrayList<Powerup>();
    public SpaceShip() {
      x = 0;
      y = 0;

@@ -8,6 +8,7 @@ void setup(){
   size(1000,1500);
   player = new Player();//check this later
   wave = new EnemyWave();//check this later
+  projectiles = new ArrayList<Projectile>();
 }
 void draw(){
   background(0);
