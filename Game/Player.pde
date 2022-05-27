@@ -41,19 +41,28 @@ public class Player extends SpaceShip {
     }
   }
   void setDir(int k, boolean bool) {
-  switch (k) {
-    case 'w':
-      up = bool;
-      break;
-    case 'a':
-      left = bool;
-      break;
-    case 's':
-      down = bool;
-      break;
-    case 'd':
-      right = bool;
-      break;
+    switch (k) {
+      case 'w':
+        up = bool;
+        break;
+      case 'a':
+        left = bool;
+        break;
+      case 's':
+        down = bool;
+        break;
+      case 'd':
+        right = bool;
+        break;
+     }
   }
-}
+  void isHit() {
+     for(int i = 0; i < projectiles.size(); i++) {
+       Projectile b = projectiles.get(i);
+       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+         HP -= b.damage;
+         projectiles.remove(b);
+       }
+     }
+   }
 }
