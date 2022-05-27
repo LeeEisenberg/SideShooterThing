@@ -18,6 +18,7 @@ public class Player extends SpaceShip {
   }
   void render() {
     super.render();
+    move(up, down, left, right);
     move();
   }
   void move(boolean up, boolean down, boolean left, boolean right) {

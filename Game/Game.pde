@@ -1,30 +1,17 @@
-import java.util.ArrayList;
 int score = 0;
 static int hiScore;
-Player player;
-ArrayList<Projectile> projectiles;
+Player ship;
+ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 EnemyWave wave;
 void setup(){
   size(1000,1500);
-  player = new Player();//check this later
+  ship = new Player();//check this later
   wave = new EnemyWave();//check this later
 }
 void draw(){
-  background(0);
-  if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
-    wave = new EnemyWave();//check this later
-  }
-  for (SpaceShip s : wave.fleet){
-    s.move();
-    s.fire();//make this shoot less often
-  }
-  for (Projectile p : projectiles){
-    p.move();
-    p.hitDetec();
-  }
-  for (SpaceShip s : wave.fleet){
-    s.render();
-  }
+  background(100);
+  ship.render();
+  ship.move();
   for (int i = 0; i < projectiles.size(); i++){
     Projectile p = projectiles.get(i);
     p.render();
