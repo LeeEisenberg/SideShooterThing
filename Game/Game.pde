@@ -27,9 +27,9 @@ void draw(){
  }
  
 void keyPressed() {
-  ship.setDir(key, true);
+  player.setDir(key, true);
 } 
 
 void keyReleased() {
-  ship.setDir(key, false);
+  player.setDir(key, false);
 }
