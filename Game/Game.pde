@@ -14,11 +14,13 @@ void draw(){
   ship.move();
   for (int i = 0; i < projectiles.size(); i++){
     Projectile p = projectiles.get(i);
+    p.move();
     p.render();
     if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
       projectiles.remove(i);
     }
   }
+  println(projectiles.size());
  }
  
 void keyPressed() {

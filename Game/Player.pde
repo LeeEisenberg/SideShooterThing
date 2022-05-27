@@ -55,6 +55,9 @@ public class Player extends SpaceShip {
     case 'd':
       right = bool;
       break;
+    case ' ':
+      fire();
+      break;
   }
 }
 }

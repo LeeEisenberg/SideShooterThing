@@ -9,6 +9,7 @@ public class SpaceShip {
      y = 0;
      size = 100;
      HP = 100;
+     weapon = new Weapon();
    }
    void move(float x_, float y_) {
      x = x_+x;
@@ -26,5 +27,8 @@ public class SpaceShip {
          projectiles.remove(b);
        }
      }
+   }
+   void fire() {
+     weapon.fire(x, y);
    }
 }
