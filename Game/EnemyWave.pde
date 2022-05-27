@@ -6,7 +6,7 @@ public class EnemyWave{
   
   public EnemyWave(){
     fleet = new ArrayList<SpaceShip>();
-    //add randomness here
+    //add randomness here later
     flightPlan = new ArrayDeque<float[]>();
     flightPlan.add(new float[] {-1, 0});
     //add more here later
@@ -21,7 +21,7 @@ public class EnemyWave{
         fleet.remove(x);
       } else{
         fleet.get(x).move(temp[0],temp[1]);
-        fleet.get(x).fire(); //maybe space the firing out a bit
+        //fleet.get(x).fire(); //maybe space the firing out a bit
       }
     }
   }

@@ -10,6 +10,8 @@ public class SpaceShip {
      size = 100;
      HP = 100;
    }
+   public SpaceShip(float x_, float y_, ){
+     
    void move(float x_, float y_) {
      x = x_+x;
      y = y_+y;
@@ -21,7 +23,7 @@ public class SpaceShip {
    void isHit() {
      for(int i = 0; i < projectiles.size(); i++) {
        Projectile b = projectiles.get(i);
-       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+       if(dist(x, y, b.xPos, b.yPos) <= size/2 && b.friendly) {
          HP -= b.damage;
          projectiles.remove(b);
        }
