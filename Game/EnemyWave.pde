@@ -5,10 +5,24 @@ public class EnemyWave{
   private ArrayDeque<float[]> flightPlan;
   
   public EnemyWave(){
-    fleet = new ArrayList(SpaceShip);
+    fleet = new ArrayList<SpaceShip>();
     //add randomness here
+    flightPlan = new ArrayDeque<float[]>();
+    flightPlan.add(new float[] {-1, 0});
+    //add more here later
+  }
     
   public void move(){
-    for 
+    float[] temp;
+    temp = flightPlan.poll();
+    for (int x = fleet.size()-1; x >= 0; x--){
+      //add hit detection here
+      if (fleet.get(x).HP <= 0){
+        fleet.remove(x);
+      } else{
+        fleet.get(x).move(temp[0],temp[1]);
+        fleet.get(x).fire(); //maybe space the firing out a bit
+      }
+    }
   }
 }
