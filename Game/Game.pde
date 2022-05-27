@@ -25,8 +25,12 @@ void draw(){
   for (SpaceShip s : wave.fleet){
     s.render();
   }
-  for (Projectile p : projectiles){
+  for (int i = 0; i < projectiles.size(); i++){
+    Projectile p = projectiles.get(i);
     p.render();
+    if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
+      projectiles.remove(i);
+    }
   }
  }
  
