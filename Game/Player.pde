@@ -56,16 +56,16 @@ public class Player extends SpaceShip {
       right = bool;
       break;
     case ' ':
-      fire();
+      fire(true);
       break;
+    }
   }
-}
-void isHit() {
-     for(int i = 0; i < projectiles.size(); i++) {
+  void isHit() {
+     for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
          HP -= b.damage;
-         projectiles.remove(b);
+         projectiles.remove(i);
        }
      }
    }

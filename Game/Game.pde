@@ -6,8 +6,8 @@ ArrayList<Projectile> projectiles;
 EnemyWave wave;
 void setup(){
   size(1500,1000);
-  player = new Player();//check this later
-  wave = new EnemyWave();//check this later
+  player = new Player();
+  wave = new EnemyWave();
   projectiles = new ArrayList<Projectile>();
 }
 void draw(){
@@ -30,7 +30,12 @@ void draw(){
       projectiles.remove(i);
     }
   }
- }
+  if (player.HP < 1){
+    player = new Player();
+    wave = new EnemyWave();
+    projectiles = new ArrayList<Projectile>();
+  }
+}
  
 void keyPressed() {
   player.setDir(key, true);

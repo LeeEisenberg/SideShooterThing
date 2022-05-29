@@ -21,12 +21,14 @@ public class EnemyWave{
     float[] temp;
     temp = flightPlan.poll();
     for (int x = fleet.size()-1; x >= 0; x--){
-      //add hit detection here
+      fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
         fleet.remove(x);
       } else{
         fleet.get(x).move(temp[0],temp[1]);
-        //fleet.get(x).fire(); //maybe space the firing out a bit
+        if (fleet.get(x).x % 40 == 0){
+          fleet.get(x).fire(false); //maybe space the firing out a bit
+        }
       }
     }
     if (temp[2] > 0){
