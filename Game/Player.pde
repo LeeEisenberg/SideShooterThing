@@ -1,8 +1,9 @@
+<<<<<<< HEAD
 public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
   public Player() {
-    super(0, 500, 100, 100);
+    super();
     dX = 0;
     dY = 0;
     basedX = 6.66;
@@ -42,22 +43,25 @@ public class Player extends SpaceShip {
     }
   }
   void setDir(int k, boolean bool) {
-    switch (k) {
-      case 'w':
-        up = bool;
-        break;
-      case 'a':
-        left = bool;
-        break;
-      case 's':
-        down = bool;
-        break;
-      case 'd':
-        right = bool;
-        break;
-     }
+  switch (k) {
+    case 'w':
+      up = bool;
+      break;
+    case 'a':
+      left = bool;
+      break;
+    case 's':
+      down = bool;
+      break;
+    case 'd':
+      right = bool;
+      break;
+    case ' ':
+      fire();
+      break;
   }
-  void isHit() {
+}
+void isHit() {
      for(int i = 0; i < projectiles.size(); i++) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {

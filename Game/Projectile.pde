@@ -47,4 +47,13 @@ public class Projectile{
   //    }
   //  }
   //}
+  void setxPos(float x) {
+    xPos = x;
+  }
+  void setyPos(float y) {
+    yPos = y;
+  }
+  Projectile copy(Projectile p) {
+    return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly);
+  }
 }

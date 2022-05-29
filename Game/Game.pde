@@ -23,8 +23,12 @@ void draw(){
   for (int x = 0; x < wave.fleet.size(); x++){
     wave.fleet.get(x).render();
   }
-  for (int x = 0; x < projectiles.size(); x++){
-    projectiles.get(x).render();
+  for (int i = 0; i < projectiles.size(); i++){
+    Projectile p = projectiles.get(i);
+    p.render();
+    if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
+      projectiles.remove(i);
+    }
   }
  }
  
