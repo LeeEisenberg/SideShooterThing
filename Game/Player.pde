@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
