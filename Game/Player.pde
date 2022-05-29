@@ -2,7 +2,7 @@ public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
   public Player() {
-    super();
+    super(0, 500, 100, 100);
     dX = 0;
     dY = 0;
     basedX = 6.66;
@@ -18,6 +18,7 @@ public class Player extends SpaceShip {
   }
   void render() {
     super.render();
+    move(up, down, left, right);
     move();
   }
   void move(boolean up, boolean down, boolean left, boolean right) {

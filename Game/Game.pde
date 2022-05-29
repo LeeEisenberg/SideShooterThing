@@ -5,7 +5,7 @@ Player player;
 ArrayList<Projectile> projectiles;
 EnemyWave wave;
 void setup(){
-  size(1000,1500);
+  size(1500,1000);
   player = new Player();//check this later
   wave = new EnemyWave();//check this later
   projectiles = new ArrayList<Projectile>();
@@ -19,6 +19,7 @@ void draw(){
     projectiles.get(x).move();
   }
   wave.move();
+  player.render();
   for (int x = 0; x < wave.fleet.size(); x++){
     wave.fleet.get(x).render();
   }

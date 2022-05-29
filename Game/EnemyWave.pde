@@ -6,9 +6,14 @@ public class EnemyWave{
   
   public EnemyWave(){
     fleet = new ArrayList<SpaceShip>();
-    //add randomness here later
+    fleet.add(new SpaceShip(1600, 200, 100, 100));
+    fleet.add(new SpaceShip(1600, 400, 100, 100));
+    fleet.add(new SpaceShip(1600, 600, 100, 100));
+    fleet.add(new SpaceShip(1600, 800, 100, 100));
     flightPlan = new ArrayDeque<float[]>();
-    flightPlan.add(new float[] {-1, 0});
+    flightPlan.add(new float[] {-1, 0, 200, 0});
+    flightPlan.add(new float[] {-1, 2, 50, 100});
+    flightPlan.add(new float[] {-1, -2, 100, 100});
     //add more here later
   }
     
@@ -23,6 +28,13 @@ public class EnemyWave{
         fleet.get(x).move(temp[0],temp[1]);
         //fleet.get(x).fire(); //maybe space the firing out a bit
       }
+    }
+    if (temp[2] > 0){
+      temp[2]--;
+      flightPlan.addFirst(temp);
+    } else if (temp[3] > 0){
+      temp[2] = temp[3];
+      flightPlan.add(temp);
     }
   }
 }
