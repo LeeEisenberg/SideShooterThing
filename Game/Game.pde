@@ -1,32 +1,41 @@
+import java.util.ArrayList;
 int score = 0;
 static int hiScore;
-Player ship;
-ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+Player player;
+ArrayList<Projectile> projectiles;
 EnemyWave wave;
 void setup(){
-  size(1000,1500);
-  ship = new Player();//check this later
+  size(1500,1000);
+  player = new Player();//check this later
   wave = new EnemyWave();//check this later
+  projectiles = new ArrayList<Projectile>();
 }
 void draw(){
-  background(100);
-  ship.render();
-  ship.move();
+  background(0);
+  if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
+    wave = new EnemyWave();//check this later
+  }
+  for (int x = 0; x < projectiles.size(); x++){
+    projectiles.get(x).move();
+  }
+  wave.move();
+  player.render();
+  for (int x = 0; x < wave.fleet.size(); x++){
+    wave.fleet.get(x).render();
+  }
   for (int i = 0; i < projectiles.size(); i++){
     Projectile p = projectiles.get(i);
-    p.move();
     p.render();
     if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
       projectiles.remove(i);
     }
   }
-  println(projectiles.size());
  }
  
 void keyPressed() {
-  ship.setDir(key, true);
+  player.setDir(key, true);
 } 
 
 void keyReleased() {
-  ship.setDir(key, false);
+  player.setDir(key, false);
 }

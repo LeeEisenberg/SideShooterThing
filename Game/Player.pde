@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
@@ -60,4 +61,13 @@ public class Player extends SpaceShip {
       break;
   }
 }
+void isHit() {
+     for(int i = 0; i < projectiles.size(); i++) {
+       Projectile b = projectiles.get(i);
+       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+         HP -= b.damage;
+         projectiles.remove(b);
+       }
+     }
+   }
 }
