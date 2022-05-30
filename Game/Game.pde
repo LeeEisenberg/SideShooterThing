@@ -4,16 +4,24 @@ static int hiScore;
 Player player;
 ArrayList<Projectile> projectiles;
 EnemyWave wave;
+int mode;
+PImage[] sprites;
 void setup(){
   size(1500,1000);
   player = new Player();
   wave = new EnemyWave();
   projectiles = new ArrayList<Projectile>();
+  mode = 0;
+  sprites = new PImage[4];
+  for(int i = 0; i < 4; i++) {
+      sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
+  }
 }
 void draw(){
   background(0);
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
-    wave = new EnemyWave();//check this later
+    mode++;
+    wave = new EnemyWave(mode % 2);//check this later
   }
   for (int x = 0; x < projectiles.size(); x++){
     projectiles.get(x).move();
@@ -35,6 +43,8 @@ void draw(){
     wave = new EnemyWave();
     projectiles = new ArrayList<Projectile>();
   }
+  textSize(100);
+  text("Wave: " + mode, 20, 100);
 }
  
 void keyPressed() {
