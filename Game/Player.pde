@@ -1,6 +1,7 @@
 public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
+  public PImage sprite;
   public Player() {
     super();
     dX = 0;
@@ -11,13 +12,16 @@ public class Player extends SpaceShip {
     down = false;
     left = false;
     right = false;
+    sprite = loadImage("sprites/player.png");
   }
  
   void move() {
     move(dX, dY);
   }
   void render() {
-    super.render();
+    imageMode(CENTER);
+    image(sprite, x, y);
+    isHit();
     move(up, down, left, right);
     move();
   }

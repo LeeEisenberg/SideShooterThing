@@ -19,6 +19,10 @@ void setup(){
 }
 void draw(){
   background(0);
+  pushMatrix();
+  fill(0, 255, 0);
+  rect(500, 0, player.HP+500, 100);
+  popMatrix();
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     mode++;
     wave = new EnemyWave(mode % 2);//check this later
@@ -42,9 +46,11 @@ void draw(){
     player = new Player();
     wave = new EnemyWave();
     projectiles = new ArrayList<Projectile>();
+    mode = 0;
   }
   textSize(100);
-  text("Wave: " + mode, 20, 100);
+  text("Wave: " + (mode+1), 20, 100);
+  
 }
  
 void keyPressed() {
