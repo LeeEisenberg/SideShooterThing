@@ -46,23 +46,23 @@ public class Player extends SpaceShip {
     }
   }
   void setDir(int k, boolean bool) {
-  switch (k) {
-    case 'w':
-      up = bool;
-      break;
-    case 'a':
-      left = bool;
-      break;
-    case 's':
-      down = bool;
-      break;
-    case 'd':
-      right = bool;
-      break;
-    case ' ':
-      fire(true);
-      break;
-    }
+    switch (k) {
+      case 'w':
+        up = bool;
+        break;
+      case 'a':
+        left = bool;
+        break;
+      case 's':
+        down = bool;
+        break;
+      case 'd':
+        right = bool;
+        break;
+      case ' ':
+        fire(true);
+        break;
+     }
   }
   void isHit() {
      for(int i = projectiles.size()-1; i >= 0; i--) {
