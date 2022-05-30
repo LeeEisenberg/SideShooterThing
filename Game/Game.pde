@@ -21,7 +21,7 @@ void draw(){
   background(0);
   pushMatrix();
   fill(0, 255, 0);
-  rect(500, 0, player.HP+500, 100);
+  rect(750-player.HP*2.5, 0, player.HP*5, 100);
   popMatrix();
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     mode++;
@@ -42,6 +42,12 @@ void draw(){
       projectiles.remove(i);
     }
   }
+  for (int x = 0; x < wave.fleet.size(); x++){
+    if (wave.fleet.get(x).x < 0){
+      player.HP = 0;
+      x = wave.fleet.size();
+    }
+  }
   if (player.HP < 1){
     player = new Player();
     wave = new EnemyWave();
@@ -59,4 +65,12 @@ void keyPressed() {
 
 void keyReleased() {
   player.setDir(key, false);
+}
+
+void mousePressed(){
+  player.setDir(' ', true);
+}
+
+void mouseReleased(){
+  player.setDir(' ', false);
 }
