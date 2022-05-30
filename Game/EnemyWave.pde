@@ -16,6 +16,28 @@ public class EnemyWave{
     flightPlan.add(new float[] {-1, -2, 100, 100});
     //add more here later
   }
+  
+  public EnemyWave(int mode) {
+  fleet = new ArrayList<SpaceShip>();
+  fleet.add(new SpaceShip(1600, 200, 100, 100));
+  fleet.add(new SpaceShip(1600, 400, 100, 100));
+  fleet.add(new SpaceShip(1600, 600, 100, 100));
+  fleet.add(new SpaceShip(1600, 800, 100, 100));
+  flightPlan = new ArrayDeque<float[]>();
+  if(mode == 1) {
+    flightPlan.add(new float[] {-1, 2, 50, 100});
+    flightPlan.add(new float[] {0.5, 1, 50, 100});
+    flightPlan.add(new float[] {0.5, -1, 100, 100});
+    flightPlan.add(new float[] {-1, -2, 100, 100});
+  }
+  if(mode == 0) {
+    flightPlan = new ArrayDeque<float[]>();
+    flightPlan.add(new float[] {-1, 0, 200, 0});
+    flightPlan.add(new float[] {-1, 2, 50, 100});
+    flightPlan.add(new float[] {-1, -2, 100, 100});
+  }
+  
+  }
     
   public void move(){
     float[] temp;
