@@ -4,12 +4,14 @@ public class SpaceShip {
    protected float size;
    protected Weapon weapon;
    protected ArrayList<Powerup> drops = new ArrayList<Powerup>();
+   protected PImage sprite;
    public SpaceShip() {
      x = 0;
      y = 500;
      size = 100;
      HP = 100;
      weapon = new Weapon();
+     sprite = loadImage("sprites/ship.png");
    }
    public SpaceShip(float x_, float y_, float size_, float HP_){
      x = x_;
@@ -17,13 +19,14 @@ public class SpaceShip {
      size = size_;
      HP = HP_;
      weapon = new Weapon();
+     sprite = loadImage("sprites/ship.png");
    }
    void move(float x_, float y_) {
      x = x_+x;
      y = y_+y;
    }
    void render() {
-     circle(x, y, size);
+     image(sprite, x, y);
      isHit();
    }
    void isHit() {
