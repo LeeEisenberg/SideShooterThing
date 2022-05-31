@@ -26,6 +26,8 @@ public class SpaceShip {
      y = y_+y;
    }
    void render() {
+     circle(x, y, size);
+     sprite.resize((int)(224 * size/150), (int)(148 * size/150));
      image(sprite, x, y);
      isHit();
    }
