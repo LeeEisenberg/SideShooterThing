@@ -18,7 +18,7 @@ void setup(){
   }
 }
 void draw(){
-  background(0);
+  background(50);
   pushMatrix();
   fill(0, 255, 0);
   rect(750-player.HP*2.5, 0, player.HP*5, 100);

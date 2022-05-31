@@ -28,6 +28,7 @@ public class SpaceShip {
    void render() {
      image(sprite, x, y);
      isHit();
+     rect(x-HP*.5, y+size/2+50, HP, 20);
    }
    void isHit() {
      for(int i = projectiles.size()-1; i >= 0; i--) {
