@@ -6,6 +6,7 @@ ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int mode;
 PImage[] sprites;
+PImage background;
 void setup(){
   size(1500,1000);
   player = new Player();
@@ -16,9 +17,11 @@ void setup(){
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
   }
+  background = loadImage("sprites/background.jpg");
+  background.resize(width,height);
 }
 void draw(){
-  background(50);
+  image(background, 750, 500);
   pushMatrix();
   fill(0, 255, 0);
   rect(750-player.HP*2.5, 0, player.HP*5, 100);
