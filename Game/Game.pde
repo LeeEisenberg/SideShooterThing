@@ -64,6 +64,9 @@ void draw(){
  
 void keyPressed() {
   player.setDir(key, true);
+  if(key == CODED && keyCode == SHIFT) {
+    player.dash();
+  }
 } 
 
 void keyReleased() {

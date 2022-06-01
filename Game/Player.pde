@@ -1,5 +1,5 @@
 public class Player extends SpaceShip {
-  private float basedX, basedY, dY, dX;
+  private float basedX, basedY, dY, dX, dashTimer;
   public boolean up, down, left, right;
   public PImage sprite;
   public Player() {
@@ -44,6 +44,11 @@ public class Player extends SpaceShip {
     if(!left && !right) {
       dX = 0;
     }
+    if(dashTimer != 0) {
+      dX *= 5;
+      dY  *=5;
+      dashTimer--;
+    }
   }
   void setDir(int k, boolean bool) {
     switch (k) {
@@ -73,4 +78,9 @@ public class Player extends SpaceShip {
        }
      }
    }
+  void dash() {
+    if(dashTimer == 0) {
+      dashTimer = 60;
+    }
+  }
 }
