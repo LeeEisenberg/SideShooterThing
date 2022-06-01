@@ -1,6 +1,7 @@
 public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
+  public PImage sprite;
   public Player() {
     super();
     dX = 0;
@@ -11,13 +12,17 @@ public class Player extends SpaceShip {
     down = false;
     left = false;
     right = false;
+    sprite = loadImage("sprites/player.png");
   }
  
   void move() {
     move(dX, dY);
   }
   void render() {
-    super.render();
+    imageMode(CENTER);
+    image(sprite, x, y);
+    isHit();
+    move(up, down, left, right);
     move();
   }
   void move(boolean up, boolean down, boolean left, boolean right) {
@@ -54,14 +59,17 @@ public class Player extends SpaceShip {
       case 'd':
         right = bool;
         break;
+      case ' ':
+        fire(true);
+        break;
      }
   }
   void isHit() {
-     for(int i = 0; i < projectiles.size(); i++) {
+     for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
          HP -= b.damage;
-         projectiles.remove(b);
+         projectiles.remove(i);
        }
      }
    }
