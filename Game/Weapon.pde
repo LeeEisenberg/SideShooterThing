@@ -16,9 +16,9 @@ public class Weapon {
       Projectile bullet1 = new Projectile().copy(active);
       Projectile bullet2 = new Projectile().copy(active);
       bullet1.setxPos(x);
-      bullet1.setyPos(y+10);
+      bullet1.setyPos(y+20);
       bullet2.setxPos(x);
-      bullet2.setyPos(y-10);
+      bullet2.setyPos(y-20);
       if (!friendly){
         bullet1.dX *= -1;
         bullet1.friendly = false;
