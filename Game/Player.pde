@@ -2,9 +2,9 @@ public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
   public PImage sprite;
-  private static Weapon secondary;
+  private Weapon secondary;
   public Player() {
-    super();
+    super(2);
     dX = 0;
     dY = 0;
     basedX = 6.66;
@@ -62,10 +62,10 @@ public class Player extends SpaceShip {
         right = bool;
         break;
       case ' ':
-        fire(true, false);
+        weapon.fire(x, y, true);
         break;
-      case ALT:
-        fire(true, true);
+      case 'f':
+        secondary.fire(x, y, true);
         break;
       case 'l':
         if (bool){

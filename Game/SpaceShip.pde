@@ -13,6 +13,10 @@ public class SpaceShip {
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
    }
+   public SpaceShip(int pattern){
+     this();
+     weapon = new Weapon(pattern);
+   }
    public SpaceShip(float x_, float y_, float size_, float HP_){
      x = x_;
      y = y_;
@@ -46,10 +50,5 @@ public class SpaceShip {
    }
    void fire() {
      weapon.fire(x, y, false);
-   }
-   void fire(boolean friendly_, boolean secondary) {
-     if (secondary){
-       Player.secondary.fire(x, y, friendly_);
-     }
    }
 }
