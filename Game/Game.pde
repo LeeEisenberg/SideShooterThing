@@ -71,9 +71,13 @@ void keyReleased() {
 }
 
 void mousePressed(){
-  player.setDir(' ', true);
+  if (mouseButton == LEFT){
+    player.setDir(' ', true);
+  }
 }
 
 void mouseReleased(){
-  player.setDir(' ', false);
+  if (mouseButton == LEFT){
+    player.setDir(' ', false);
+  }
 }
