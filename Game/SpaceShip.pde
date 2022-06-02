@@ -44,7 +44,12 @@ public class SpaceShip {
        }
      }
    }
-   void fire(boolean friendly_) {
-     weapon.fire(x, y, friendly_);
+   void fire() {
+     weapon.fire(x, y, false);
+   }
+   void fire(boolean friendly_, boolean secondary) {
+     if (secondary){
+       Player.secondary.fire(x, y, friendly_);
+     }
    }
 }

@@ -52,7 +52,7 @@ public class EnemyWave{
       } else{
         fleet.get(x).move(temp[0],temp[1]);
         if (fleet.get(x).x % 40 == 0){
-          fleet.get(x).fire(false); //maybe space the firing out a bit
+          fleet.get(x).fire(); //maybe space the firing out a bit
         }
       }
     }

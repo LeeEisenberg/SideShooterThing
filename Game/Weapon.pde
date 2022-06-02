@@ -12,7 +12,8 @@ public class Weapon {
     this(1);
   }
   void fire(float x, float y, boolean friendly) {
-    if (pattern == 2){
+    
+    if (pattern == 2){//2 bullets next to each other
       Projectile bullet1 = new Projectile().copy(active);
       Projectile bullet2 = new Projectile().copy(active);
       bullet1.setxPos(x);
@@ -27,7 +28,7 @@ public class Weapon {
       }
       projectiles.add(bullet1);
       projectiles.add(bullet2);
-    } else if (pattern == 1){
+    } else if (pattern == 1){//1 bullet
       Projectile bullet = new Projectile().copy(active);
       bullet.setxPos(x);
       bullet.setyPos(y);

@@ -2,6 +2,7 @@ public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX;
   public boolean up, down, left, right;
   public PImage sprite;
+  private static Weapon secondary;
   public Player() {
     super();
     dX = 0;
@@ -13,6 +14,7 @@ public class Player extends SpaceShip {
     left = false;
     right = false;
     sprite = loadImage("sprites/player.png");
+    secondary = new Weapon(3);
   }
  
   void move() {
@@ -60,7 +62,10 @@ public class Player extends SpaceShip {
         right = bool;
         break;
       case ' ':
-        fire(true);
+        fire(true, false);
+        break;
+      case ALT:
+        fire(true, true);
         break;
       case 'l':
         if (bool){
