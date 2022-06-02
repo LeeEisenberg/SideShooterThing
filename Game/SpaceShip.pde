@@ -21,6 +21,10 @@ public class SpaceShip {
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
    }
+  public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
+     this(x_, y_, size_, HP_);
+     weapon = new Weapon(pattern);
+  }
    void move(float x_, float y_) {
      x = x_+x;
      y = y_+y;

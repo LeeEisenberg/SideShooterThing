@@ -65,6 +65,12 @@ public class Player extends SpaceShip {
       case ' ':
         fire(true);
         break;
+      case 'l':
+        if (bool){
+          mode++;
+          wave = new EnemyWave(mode);
+          break;
+        }
      }
   }
   void isHit() {

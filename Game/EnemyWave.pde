@@ -20,9 +20,9 @@ public class EnemyWave{
   public EnemyWave(int mode) {
     fleet = new ArrayList<SpaceShip>();
     if(mode == 1) {
-      fleet.add(new SpaceShip(1600, 300, 150, 200));
-      fleet.add(new SpaceShip(1600, 500, 150, 200));
-      fleet.add(new SpaceShip(1600, 700, 150, 200));
+      fleet.add(new SpaceShip(1600, 300, 150, 200, 2));
+      fleet.add(new SpaceShip(1600, 500, 150, 200, 2));
+      fleet.add(new SpaceShip(1600, 700, 150, 200, 2));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-1, 0, 200, 0});
       flightPlan.add(new float[] {-1, 2, 50, 100});
