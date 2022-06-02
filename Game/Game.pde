@@ -74,10 +74,16 @@ void mousePressed(){
   if (mouseButton == LEFT){
     player.setDir(' ', true);
   }
+  if (mouseButton == RIGHT){
+    player.setDir('f', true);
+  }
 }
 
 void mouseReleased(){
   if (mouseButton == LEFT){
     player.setDir(' ', false);
+  }
+  if (mouseButton == RIGHT){
+    player.setDir('f', false);
   }
 }
