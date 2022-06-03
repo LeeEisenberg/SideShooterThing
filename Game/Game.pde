@@ -23,7 +23,7 @@ void setup(){
 void draw(){
   image(background, 750, 500);
   pushMatrix();
-  fill(0, 255, 0);
+  fill(255-player.HP, 255-2*(100-player.HP), 0);
   rect(750-player.HP*2.5, 0, player.HP*5, 100);
   popMatrix();
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
