@@ -1,5 +1,5 @@
 public class Player extends SpaceShip {
-  private float basedX, basedY, dY, dX;
+  private float basedX, basedY, dY, dX, dashTimer;
   public boolean up, down, left, right;
   public PImage sprite;
   private Weapon secondary;
@@ -26,6 +26,9 @@ public class Player extends SpaceShip {
     isHit();
     move(up, down, left, right);
     move();
+    if(dashTimer != 0){
+    dashTimer--;
+    }
   }
   void move(boolean up, boolean down, boolean left, boolean right) {
     if(up) {
@@ -84,4 +87,10 @@ public class Player extends SpaceShip {
        }
      }
    }
+   void dash() {
+    if(dashTimer == 0) {
+      dashTimer = 60;
+      move(dX*10, dY*10);
+    }
+  }
 }
