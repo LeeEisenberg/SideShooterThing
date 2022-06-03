@@ -4,7 +4,7 @@ static int hiScore;
 Player player;
 ArrayList<Projectile> projectiles;
 EnemyWave wave;
-int mode;
+int level;
 PImage[] sprites;
 PImage background;
 void setup(){
@@ -12,7 +12,7 @@ void setup(){
   player = new Player();
   wave = new EnemyWave();
   projectiles = new ArrayList<Projectile>();
-  mode = 0;
+  level = 0;
   sprites = new PImage[4];
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
@@ -27,8 +27,8 @@ void draw(){
   rect(750-player.HP*2.5, 0, player.HP*5, 100);
   popMatrix();
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
-    mode++;
-    wave = new EnemyWave(mode % 2);//check this later
+    level++;
+    wave = new EnemyWave(level % 2);//check this later
   }
   for (int x = 0; x < projectiles.size(); x++){
     projectiles.get(x).move();
@@ -55,10 +55,10 @@ void draw(){
     player = new Player();
     wave = new EnemyWave();
     projectiles = new ArrayList<Projectile>();
-    mode = 0;
+    level = 0;
   }
   textSize(100);
-  text("Wave: " + (mode+1), 20, 100);
+  text("Wave: " + (level+1), 20, 100);
   
 }
  
