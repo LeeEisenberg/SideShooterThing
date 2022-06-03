@@ -13,13 +13,13 @@ public class Weapon {
   }
   void fire(float x, float y, boolean friendly) {
     if (pattern == 3){//3 bullets at a spread
-      Projectile bullet1 = new Projectile();
-      Projectile bullet2 = new Projectile();
-      Projectile bullet3 = new Projectile();
+      Projectile bullet1 = new Projectile(255, 150, 150);
+      Projectile bullet2 = new Projectile(255, 150, 150);
+      Projectile bullet3 = new Projectile(255, 150, 150);
       bullet1.setxPos(x);
-      bullet1.setyPos(y+20);
+      bullet1.setyPos(y+30);
       bullet2.setxPos(x);
-      bullet2.setyPos(y-20);
+      bullet2.setyPos(y-30);
       bullet3.setxPos(x);
       bullet3.setyPos(y);
       bullet1.dY = 5;
@@ -41,9 +41,9 @@ public class Weapon {
       Projectile bullet1 = new Projectile();
       Projectile bullet2 = new Projectile();
       bullet1.setxPos(x);
-      bullet1.setyPos(y+20);
+      bullet1.setyPos(y+30);
       bullet2.setxPos(x);
-      bullet2.setyPos(y-20);
+      bullet2.setyPos(y-30);
       if (!friendly){
         bullet1.dX *= -1;
         bullet1.friendly = false;
