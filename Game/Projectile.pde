@@ -4,7 +4,7 @@ public class Projectile{
   private float yPos;
   public float dX;
   private float dY;
-  private double damage;
+  public double damage;
   private int type;
   private color hue;
   public boolean friendly;
@@ -76,6 +76,9 @@ public class Projectile{
   }
   void setyPos(float y) {
     yPos = y;
+  }
+  void setHue(int r, int g, int b){
+    hue = color(r, g, b);
   }
   Projectile copy(Projectile p) {
     return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly);
