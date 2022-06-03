@@ -13,9 +13,9 @@ public class Weapon {
   }
   void fire(float x, float y, boolean friendly) {
     if (pattern == 3){//3 bullets at a spread
-      Projectile bullet1 = new Projectile().copy(active);
-      Projectile bullet2 = new Projectile().copy(active);
-      Projectile bullet3 = new Projectile().copy(active);
+      Projectile bullet1 = new Projectile();
+      Projectile bullet2 = new Projectile();
+      Projectile bullet3 = new Projectile();
       bullet1.setxPos(x);
       bullet1.setyPos(y+20);
       bullet2.setxPos(x);
@@ -38,8 +38,8 @@ public class Weapon {
     }
     if (pattern == 2){//2 bullets next to each other
     //maybe scale this to ship size??
-      Projectile bullet1 = new Projectile().copy(active);
-      Projectile bullet2 = new Projectile().copy(active);
+      Projectile bullet1 = new Projectile();
+      Projectile bullet2 = new Projectile();
       bullet1.setxPos(x);
       bullet1.setyPos(y+20);
       bullet2.setxPos(x);
@@ -53,7 +53,7 @@ public class Weapon {
       projectiles.add(bullet1);
       projectiles.add(bullet2);
     } else if (pattern == 1){//1 bullet
-      Projectile bullet = new Projectile().copy(active);
+      Projectile bullet = new Projectile();
       bullet.setxPos(x);
       bullet.setyPos(y);
       if (!friendly){
