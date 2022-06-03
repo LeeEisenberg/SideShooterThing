@@ -57,6 +57,9 @@ void draw(){
     projectiles = new ArrayList<Projectile>();
     level = 0;
   }
+  if(player.cannon.specialTimer > 0) {
+    player.cannon.specialTimer--;
+  }
   textSize(100);
   text("Wave: " + (level+1), 20, 100);
   
