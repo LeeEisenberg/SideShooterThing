@@ -2,8 +2,9 @@ public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX, dashTimer;
   public boolean up, down, left, right;
   public PImage sprite;
+  private Weapon secondary;
   public Player() {
-    super();
+    super(2);
     dX = 0;
     dY = 0;
     basedX = 6.66;
@@ -13,6 +14,7 @@ public class Player extends SpaceShip {
     left = false;
     right = false;
     sprite = loadImage("sprites/player.png");
+    secondary = new Weapon(3);
   }
  
   void move() {
@@ -63,12 +65,15 @@ public class Player extends SpaceShip {
         right = bool;
         break;
       case ' ':
-        fire(true);
+        weapon.fire(x, y, true);
+        break;
+      case 'f':
+        secondary.fire(x, y, true);
         break;
       case 'l':
         if (bool){
-          mode++;
-          wave = new EnemyWave(mode);
+          level++;
+          wave = new EnemyWave(level);
           break;
         }
      }
@@ -82,7 +87,7 @@ public class Player extends SpaceShip {
        }
      }
    }
-  void dash() {
+   void dash() {
     if(dashTimer == 0) {
       dashTimer = 60;
       move(dX*10, dY*10);

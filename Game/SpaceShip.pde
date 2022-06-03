@@ -13,6 +13,10 @@ public class SpaceShip {
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
    }
+   public SpaceShip(int pattern){
+     this();
+     weapon = new Weapon(pattern);
+   }
    public SpaceShip(float x_, float y_, float size_, float HP_){
      x = x_;
      y = y_;
@@ -21,10 +25,10 @@ public class SpaceShip {
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
    }
-  public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
+   public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
      this(x_, y_, size_, HP_);
      weapon = new Weapon(pattern);
-  }
+   }
    void move(float x_, float y_) {
      x = x_+x;
      y = y_+y;
@@ -33,7 +37,6 @@ public class SpaceShip {
      sprite.resize((int)(224 * size/150), (int)(148 * size/150));
      image(sprite, x, y);
      isHit();
-     fill(255-HP, 255-2*(100-HP), 0);
      rect(x-HP*.5, y+size/2+50, HP, 20);
    }
    void isHit() {
@@ -45,7 +48,7 @@ public class SpaceShip {
        }
      }
    }
-   void fire(boolean friendly_) {
-     weapon.fire(x, y, friendly_);
+   void fire() {
+     weapon.fire(x, y, false);
    }
 }
