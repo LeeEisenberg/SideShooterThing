@@ -60,7 +60,7 @@ void draw(){
   if(player.cannon.specialTimer > 0) {
     player.cannon.specialTimer--;
   }
-  player.cannon.fire();
+  player.cannon.fire(player.x, player.y);
   textSize(100);
   text("Wave: " + (level+1), 20, 100);
   
