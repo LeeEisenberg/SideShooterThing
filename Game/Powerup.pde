@@ -7,9 +7,11 @@ public class Powerup extends Projectile{
     damage = 0;
     if (effectType_ == 1){
       setHue(150, 150, 255);
+      effectType = 1;
     }
     if (effectType_ == 2){
       setHue(150, 255, 150);
+      effectType = 2;
     }
   }
 }

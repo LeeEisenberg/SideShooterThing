@@ -24,7 +24,7 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Projectile(255, 150, 150));
+     drops.add(new Powerup(2));
      drops.get(0).dX = 5;
    }
    public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
