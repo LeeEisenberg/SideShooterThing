@@ -12,8 +12,6 @@ public class SpaceShip {
      HP = 100;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Projectile(255, 150, 150));
-     drops.get(0).dX = -5;
    }
    public SpaceShip(int pattern){
      this();
@@ -26,6 +24,8 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
+     drops.add(new Projectile(255, 150, 150));
+     drops.get(0).dX = 5;
    }
    public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
      this(x_, y_, size_, HP_);
@@ -52,6 +52,8 @@ public class SpaceShip {
    }
    void explode(){
      for (int i = 0; i < drops.size(); i++){
+       drops.get(i).dX *= -1;
+       drops.get(i).friendly = false;
        drops.get(i).setxPos(x);
        drops.get(i).setyPos(y);
        projectiles.add(drops.get(i));
