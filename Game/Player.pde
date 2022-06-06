@@ -67,7 +67,7 @@ public class Player extends SpaceShip {
         right = bool;
         break;
       case ' ':
-        cannon.fire((int)x, (int)y);
+        cannon.activate((int)x, (int)y);
         break;
       case 'f':
         secondary.fire(x, y, true);
