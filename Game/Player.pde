@@ -67,6 +67,9 @@ public class Player extends SpaceShip {
         right = bool;
         break;
       case ' ':
+        weapon.fire(x, y, true);
+        break;
+      case 'e':
         cannon.activate((int)x, (int)y);
         break;
       case 'f':

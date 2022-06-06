@@ -49,6 +49,7 @@ public class EnemyWave{
       fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
         fleet.remove(x);
+        player.cannon.charge += 10;
       } else{
         fleet.get(x).move(temp[0],temp[1]);
         if (fleet.get(x).x % 40 == 0){

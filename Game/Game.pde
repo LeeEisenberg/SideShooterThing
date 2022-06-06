@@ -26,6 +26,9 @@ void draw(){
   fill(255-player.HP, 255-2*(100-player.HP), 0);
   rect(750-player.HP*2.5, 0, player.HP*5, 100);
   popMatrix();
+  rect(750, 0, 10, player.cannon.charge);
+  println(player.cannon.charge);
+  
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     level++;
     wave = new EnemyWave(level % 2);//check this later
