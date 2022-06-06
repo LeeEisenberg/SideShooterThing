@@ -48,6 +48,7 @@ public class EnemyWave{
     for (int x = fleet.size()-1; x >= 0; x--){
       fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
+        fleet.get(x).explode();
         fleet.remove(x);
       } else{
         fleet.get(x).move(temp[0],temp[1]);
