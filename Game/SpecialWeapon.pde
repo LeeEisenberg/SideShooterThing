@@ -19,7 +19,9 @@ public class SpecialWeapon {
   void fire(float x, float y) {
     frame = (frame+1) % 4;
     if(specialTimer > 0) {
-      image(cannonSprites[frame], x+200, y);
+      for(int i = 0; i <= 16; i++) {
+        image(cannonSprites[frame], x+(115)+85*(i+1), y);
+      }
       image(cBases[frame], x+100, y);
       for(int i = 0; i < wave.fleet.size(); i++) {
         if(wave.fleet.get(i).y >= y-100 && wave.fleet.get(i).y <= y+100) {
