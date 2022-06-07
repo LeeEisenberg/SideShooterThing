@@ -6,7 +6,7 @@ public class SpecialWeapon {
   PImage[] cBases;
   private int frame;
   public SpecialWeapon() {
-    charge = 0;
+    charge = 100;
     bullet = new Projectile();
     specialTimer = 0;
     cannonSprites = new PImage[4];
@@ -35,6 +35,7 @@ public class SpecialWeapon {
     if(specialTimer == 0 && charge >= 100) {
       specialTimer = 120;
       charge = 0;
+      specialAnim = true;
     }
   }
 }
