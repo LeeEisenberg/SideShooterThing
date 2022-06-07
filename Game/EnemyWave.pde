@@ -48,7 +48,9 @@ public class EnemyWave{
     for (int x = fleet.size()-1; x >= 0; x--){
       fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
+        fleet.get(x).explode();
         fleet.remove(x);
+        
         if(player.cannon.charge != 100 && player.cannon.specialTimer == 0){
           player.cannon.charge += 10;
         }

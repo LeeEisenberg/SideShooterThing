@@ -1,7 +1,8 @@
+
 import java.util.ArrayList;
 int score = 0;
 static int hiScore;
-Player player;
+static Player player;
 ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int level;
@@ -38,6 +39,9 @@ void setup(){
 }
 void draw(){
     image(background, 750, 500);
+    textSize(100);
+    fill(255);
+    text("Wave: " + (level+1), 20, 100);
     fill(128);
     rect(1100, 50, 200, 50);
     fill(0, 0, 255);
@@ -83,8 +87,7 @@ void draw(){
       level = 0;
     }
     
-    textSize(100);
-    text("Wave: " + (level+1), 20, 100);
+    
   if(specialAnim) {
     frameRate(15);
     frame = (frame)%10;

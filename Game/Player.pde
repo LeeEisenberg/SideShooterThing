@@ -87,7 +87,7 @@ public class Player extends SpaceShip {
      for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-         HP -= b.damage;
+         b.apply();
          projectiles.remove(i);
        }
      }
