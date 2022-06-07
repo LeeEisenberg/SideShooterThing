@@ -36,10 +36,14 @@ public class Weapon {
       projectiles.add(bullet2);
       projectiles.add(bullet3);
     }
-    if (pattern == 2){//2 bullets next to each other
+    if (pattern == 2 || pattern == 4){//2 bullets next to each other
     //maybe scale this to ship size??
       Projectile bullet1 = new Projectile();
       Projectile bullet2 = new Projectile();
+      if (pattern == 4){
+        bullet1.damage = 15;
+        bullet2.damage = 15;
+      }
       bullet1.setxPos(x);
       bullet1.setyPos(y+30);
       bullet2.setxPos(x);

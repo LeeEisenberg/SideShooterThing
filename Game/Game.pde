@@ -28,7 +28,7 @@ void draw(){
   popMatrix();
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     level++;
-    wave = new EnemyWave(level % 2);//check this later
+    wave = new EnemyWave((int) random(3));
   }
   for (int x = 0; x < projectiles.size(); x++){
     projectiles.get(x).move();
