@@ -4,6 +4,8 @@ public class Player extends SpaceShip {
   public PImage sprite;
   private SpecialWeapon cannon;
   private Weapon secondary;
+  public int power1Time;
+  public int power3Time;
   public Player() {
     super(2);
     dX = 0;
@@ -24,12 +26,19 @@ public class Player extends SpaceShip {
   }
   void render() {
     imageMode(CENTER);
+    if(power1Time > 0){
+      tint(100, 100, 255);
+    }
     image(sprite, x, y);
+    tint(255);
     isHit();
     move(up, down, left, right);
     move();
-    if(dashTimer != 0){
-    dashTimer--;
+    if(dashTimer > 0){
+      dashTimer--;
+    }
+    if (power1Time > 0){
+      power1Time--;
     }
   }
   void move(boolean up, boolean down, boolean left, boolean right) {
@@ -87,7 +96,9 @@ public class Player extends SpaceShip {
      for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-         b.apply();
+         if (power1Time <= 0){
+           b.apply();
+         }
          projectiles.remove(i);
        }
      }

@@ -33,6 +33,7 @@ public class SpecialWeapon {
   }
   void activate(float x, float y) {
     if(specialTimer == 0 && charge >= 100) {
+      Game.player.power1Time += 120; //invincibility frames lol
       specialTimer = 120;
       charge = 0;
       specialAnim = true;

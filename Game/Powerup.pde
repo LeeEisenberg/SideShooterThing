@@ -5,27 +5,33 @@ public class Powerup extends Projectile{
     super();
     friendly = false;
     damage = 0;
+    dX = 5;
     if (effectType_ == 1){
-      setHue(150, 150, 255);//should be blue
+      setHue(0, 255, 255);//should be cyan
       effectType = 1;
     } else if (effectType_ == 2){
       setHue(150, 255, 150);//should be green
       effectType = 2;
     } else if (effectType_ == 3){
-      setHue(200, 150, 255);//should be purple
+      setHue(200, 100, 255);//should be purple
       effectType = 3;
     } else {
-      setxPos(-10);
+      dX = 99999;
     }
   }
   
   public void apply(){
     if (effectType == 1){
-      //invincibility or smth
+      if (Game.player.power1Time < 10000){
+        Game.player.power1Time = 500;
+      }
     }
     if (effectType == 2){
       //healing
       Game.player.HP += 10;
+      if (Game.player.HP > 100){
+        Game.player.HP = 100;
+      }
     }
     if (effectType == 3){
       //damage buff or smth

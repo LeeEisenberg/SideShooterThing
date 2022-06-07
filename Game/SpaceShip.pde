@@ -1,4 +1,3 @@
-
 public class SpaceShip {
    protected float x, y;
    public float HP;
@@ -25,8 +24,12 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Powerup((int) random(1, 7)));//chance to not spawn (not currently working)
-     drops.get(0).dX = 5;
+     drops.add(new Powerup((int) random(1, 4)));//chance to not spawn is 0 for testing
+     for (int i = drops.size()-1; i > 0; i--){
+       if (drops.get(i).dX > 100){
+         drops.remove(i);
+       }
+     }
    }
    public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
      this(x_, y_, size_, HP_);
