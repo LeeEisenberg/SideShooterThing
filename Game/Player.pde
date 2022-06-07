@@ -90,7 +90,7 @@ public class Player extends SpaceShip {
   void dash() {
     if(dashTimer == 0) {
       dashTimer = 60;
-      move(dX*10, dY*10);
+      move(dX*20, dY*20);
     }
  }
 }
