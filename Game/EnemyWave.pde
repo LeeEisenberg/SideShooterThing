@@ -30,7 +30,8 @@ public class EnemyWave{
       fleet.add(new SpaceShip(1700, 700, 75, 50*(1+(level/10.0)*(level/10.0)), 1));
       fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/10.0)*(level/10.0)), 1));
       flightPlan = new ArrayDeque<float[]>();
-      flightPlan.add(new float[] {-1, 0, 2000, 2000});
+      flightPlan.add(new float[] {-1, 0, 8, 9});
+      flightPlan.add(new float[] {0, 0, 1, 1});
     }
     if(mode == 1) {
       fleet.add(new SpaceShip(1600, 300, 150, 200*(1+(level/10.0)*(level/10.0)), 4));
@@ -63,6 +64,9 @@ public class EnemyWave{
       if (fleet.get(x).HP <= 0){
         fleet.get(x).explode();
         fleet.remove(x);
+        if(player.cannon.charge != 100 && player.cannon.specialTimer == 0){
+          player.cannon.charge += 10;
+        }
       } else{
         fleet.get(x).move(temp[0],temp[1]);
         if (fleet.get(x).x % 40 == 0){

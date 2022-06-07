@@ -24,7 +24,7 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Powerup((int) random(1, 20)));//chance to not spawn
+     drops.add(new Powerup((int) random(1, 4)));//chance to not spawn is 0 for testing
      for (int i = drops.size()-1; i > 0; i--){
        if (drops.get(i).dX > 100){
          drops.remove(i);
@@ -43,6 +43,7 @@ public class SpaceShip {
      sprite.resize((int)(224 * size/150), (int)(148 * size/150));
      image(sprite, x, y);
      isHit();
+     fill(255-HP, 255-2*(100-HP), 0);
      rect(x-HP*.5, y+size/2+50, HP, 20);
    }
    void isHit() {
