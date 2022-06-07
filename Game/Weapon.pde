@@ -8,6 +8,10 @@ public class Weapon {
     ammo[0] = active;
     pattern = pattern_;
   }
+  public Weapon(int pattern_, boolean isPierce){
+    this(pattern_);
+    ammo[0].pierce = isPierce;
+  }
   public Weapon(){
     this(1);
   }
@@ -60,6 +64,14 @@ public class Weapon {
         bullet.dX *= -1;
         bullet.friendly = false;
       }
+      projectiles.add(bullet);
+    }else if(pattern == 4) {
+      Projectile bullet = new Projectile();
+      bullet.pierce = true;
+      bullet.setxPos(x);
+      bullet.setyPos(y);
+      bullet.damage = 5;
+      bullet.dX *=2;
       projectiles.add(bullet);
     }
   }

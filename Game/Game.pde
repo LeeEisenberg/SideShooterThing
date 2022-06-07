@@ -7,13 +7,15 @@ ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int level;
 PImage[] sprites;
+PImage[] piercing;
 PImage background;
 PImage special[];
 PImage flash;
 PImage[] lightning;
 PImage light;
 boolean specialAnim;
-int frame, frame2;
+int frame;
+
 void setup(){
   frameRate(60);
   size(1500,1000);
@@ -32,6 +34,10 @@ void setup(){
   lightning = new PImage[7];
   for(int i = 0; i < 7; i++) {
     lightning[i] = loadImage("sprites/light"+(i+1)+".png");
+  }
+  piercing = new PImage[4];
+  for(int i = 0; i < 4; i++) {
+    piercing[i] = loadImage("sprites/pierce"+(i+1)+".png");
   }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);

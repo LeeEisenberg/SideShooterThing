@@ -9,7 +9,7 @@ public class Projectile{
   private color hue;
   public boolean friendly;
   public int frame;
-  
+  public boolean pierce;
   public Projectile(){
     size = 10;
     xPos = 200;
@@ -45,6 +45,10 @@ public class Projectile{
     friendly = friendly_;
     
   }
+  public Projectile(float size_, float xPos_, float yPos_, float dX_, float dY_, double damage_, color hue_, boolean friendly_, boolean pierce_){
+    this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
+    pierce = pierce_;
+  }
   
   public void move(){
     xPos += dX;
@@ -59,7 +63,11 @@ public class Projectile{
       image(sprites[frame], -xPos, yPos);
       popMatrix();
     }else {
-      image(sprites[frame], xPos, yPos);
+      if(pierce){
+        image(piercing[frame], xPos, yPos);
+      }else{
+         image(sprites[frame], xPos, yPos);
+      }
     }
     tint(255);
   }
@@ -81,7 +89,7 @@ public class Projectile{
     hue = color(r, g, b);
   }
   Projectile copy(Projectile p) {
-    return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly);
+    return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly, p.pierce);
   }
   void apply(){
     Game.player.HP -= damage;

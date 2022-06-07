@@ -48,7 +48,9 @@ public class SpaceShip {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && b.friendly) {
          HP -= b.damage;
-         projectiles.remove(i);
+         if(!projectiles.get(i).pierce){
+           projectiles.remove(i);
+         }
        }
      }
    }
