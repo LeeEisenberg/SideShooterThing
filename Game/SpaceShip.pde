@@ -24,8 +24,7 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Powerup((int) random(1, 7)));//chance to not spawn (not currently working)
-     drops.get(0).dX = 5;
+     drops.add(new Powerup((int) random(1, 7)));//chance to not spawn
    }
    public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
      this(x_, y_, size_, HP_);

@@ -5,6 +5,7 @@ public class Powerup extends Projectile{
     super();
     friendly = false;
     damage = 0;
+    dX = 5;
     if (effectType_ == 1){
       setHue(150, 150, 255);//should be blue
       effectType = 1;
@@ -15,7 +16,7 @@ public class Powerup extends Projectile{
       setHue(200, 150, 255);//should be purple
       effectType = 3;
     } else {
-      setxPos(-10);
+      dX = 99999;
     }
   }
   
@@ -26,6 +27,9 @@ public class Powerup extends Projectile{
     if (effectType == 2){
       //healing
       Game.player.HP += 10;
+      if (Game.player.HP > 100){
+        Game.player.HP = 100;
+      }
     }
     if (effectType == 3){
       //damage buff or smth
