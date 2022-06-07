@@ -3,7 +3,7 @@ public class SpaceShip {
    public float HP;
    protected float size;
    protected Weapon weapon;
-   protected ArrayList<Powerup> drops = new ArrayList<Powerup>();
+   protected ArrayList<Projectile> drops = new ArrayList<Projectile>();
    protected PImage sprite;
    public SpaceShip() {
      x = 0;
@@ -24,6 +24,8 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
+     drops.add(new Powerup(2));
+     drops.get(0).dX = 5;
    }
    public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
      this(x_, y_, size_, HP_);
@@ -46,6 +48,15 @@ public class SpaceShip {
          HP -= b.damage;
          projectiles.remove(i);
        }
+     }
+   }
+   void explode(){
+     for (int i = 0; i < drops.size(); i++){
+       drops.get(i).dX *= -1;
+       drops.get(i).friendly = false;
+       drops.get(i).setxPos(x);
+       drops.get(i).setyPos(y);
+       projectiles.add(drops.get(i));
      }
    }
    void fire() {

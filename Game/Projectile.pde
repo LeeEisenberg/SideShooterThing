@@ -4,7 +4,7 @@ public class Projectile{
   private float yPos;
   public float dX;
   private float dY;
-  private double damage;
+  public double damage;
   private int type;
   private color hue;
   public boolean friendly;
@@ -20,7 +20,18 @@ public class Projectile{
     type = 0;
     hue = color(255);
     friendly = true;
-    
+  }
+  
+  public Projectile(int red, int green, int blue){
+    size = 10;
+    xPos = 200;
+    yPos = 200;
+    dX = 10;
+    dY = 0;
+    damage = 10;
+    type = 0;
+    hue = color(red, green, blue);
+    friendly = true;
   }
   
   public Projectile(float size_, float xPos_, float yPos_, float dX_, float dY_, double damage_, color hue_, boolean friendly_){
@@ -40,7 +51,7 @@ public class Projectile{
     yPos += dY;
   }
   public void render(){
-    fill(hue);
+    tint(hue);
     frame = (frame+1) % 4;
     if(!friendly) {
       pushMatrix();
@@ -50,7 +61,7 @@ public class Projectile{
     }else {
       image(sprites[frame], xPos, yPos);
     }
-    
+    tint(255);
   }
   //public void hitDetec(){//deprecated
   //  for (SpaceShip s : Game.wave.fleet){
@@ -65,6 +76,9 @@ public class Projectile{
   }
   void setyPos(float y) {
     yPos = y;
+  }
+  void setHue(int r, int g, int b){
+    hue = color(r, g, b);
   }
   Projectile copy(Projectile p) {
     return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly);
