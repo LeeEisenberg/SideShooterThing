@@ -2,6 +2,7 @@ public class Player extends SpaceShip {
   private float basedX, basedY, dY, dX, dashTimer;
   public boolean up, down, left, right;
   public PImage sprite;
+  private SpecialWeapon cannon;
   private Weapon secondary;
   public Player() {
     super(2);
@@ -15,6 +16,7 @@ public class Player extends SpaceShip {
     right = false;
     sprite = loadImage("sprites/player.png");
     secondary = new Weapon(3);
+    cannon = new SpecialWeapon();
   }
  
   void move() {
@@ -67,6 +69,9 @@ public class Player extends SpaceShip {
       case ' ':
         weapon.fire(x, y, true);
         break;
+      case 'e':
+        cannon.activate((int)x, (int)y);
+        break;
       case 'f':
         secondary.fire(x, y, true);
         break;
@@ -79,18 +84,18 @@ public class Player extends SpaceShip {
      }
   }
   void isHit() {
-   for(int i = projectiles.size()-1; i >= 0; i--) {
-     Projectile b = projectiles.get(i);
-     if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-       b.apply();
-       projectiles.remove(i);
+     for(int i = projectiles.size()-1; i >= 0; i--) {
+       Projectile b = projectiles.get(i);
+       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+         b.apply();
+         projectiles.remove(i);
+       }
      }
    }
- }
-  void dash() {
+   void dash() {
     if(dashTimer == 0) {
       dashTimer = 60;
-      move(dX*10, dY*10);
+      move(dX*20, dY*20);
     }
- }
+  }
 }
