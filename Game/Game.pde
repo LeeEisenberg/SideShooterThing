@@ -10,7 +10,7 @@ PImage background;
 void setup(){
   size(1500,1000);
   player = new Player();
-  wave = new EnemyWave();
+  wave = new EnemyWave((int) random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
   sprites = new PImage[4];
