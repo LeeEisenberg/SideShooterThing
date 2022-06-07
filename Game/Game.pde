@@ -9,9 +9,12 @@ PImage[] sprites;
 PImage background;
 PImage special[];
 PImage flash;
+PImage[] lightning;
+PImage light;
 boolean specialAnim;
-int frame;
+int frame, frame2;
 void setup(){
+  frameRate(60);
   size(1500,1000);
   player = new Player();
   wave = new EnemyWave();
@@ -22,8 +25,12 @@ void setup(){
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
   }
   special = new PImage[75];
-  for(int i = 0; i<=74; i++) {
-    special[i] = loadImage("sprites/flash"+(i+10)+".png");
+  for(int i = 0; i<=9; i++) {
+    special[i] = loadImage("sprites/flash"+(i+1)+".png");
+  }
+  lightning = new PImage[7];
+  for(int i = 0; i < 7; i++) {
+    lightning[i] = loadImage("sprites/light"+(i+1)+".png");
   }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
@@ -79,16 +86,16 @@ void draw(){
     textSize(100);
     text("Wave: " + (level+1), 20, 100);
   if(specialAnim) {
-    
-    frame = (frame)%75;
+    frameRate(15);
+    frame = (frame)%10;
     flash = special[frame];
-    
-    imageMode(CENTER);
     image(flash, player.x, player.y);
+   
     
     frame++;
-    if(frame == 75) {
+    if(frame == 10) {
       specialAnim = false;
+      frameRate(60);
     }
   }
   
