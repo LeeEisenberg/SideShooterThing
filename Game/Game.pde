@@ -7,6 +7,7 @@ EnemyWave wave;
 int level;
 PImage[] sprites;
 PImage background;
+boolean specialAnim;
 void setup(){
   size(1500,1000);
   player = new Player();
@@ -22,12 +23,10 @@ void setup(){
 }
 void draw(){
   image(background, 750, 500);
-  pushMatrix();
   fill(255-player.HP, 255-2*(100-player.HP), 0);
   rect(750-player.HP*2.5, 0, player.HP*5, 100);
-  popMatrix();
-  rect(750, 0, 10, player.cannon.charge);
-  println(player.cannon.charge);
+  rect(1100, 50, 200, 50);
+  rect(1100, 50, 2*player.cannon.charge, 50);
   
   if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
     level++;
