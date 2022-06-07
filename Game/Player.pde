@@ -79,18 +79,18 @@ public class Player extends SpaceShip {
      }
   }
   void isHit() {
-     for(int i = projectiles.size()-1; i >= 0; i--) {
-       Projectile b = projectiles.get(i);
-       if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-         HP -= b.damage;
-         projectiles.remove(i);
-       }
+   for(int i = projectiles.size()-1; i >= 0; i--) {
+     Projectile b = projectiles.get(i);
+     if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
+       b.apply();
+       projectiles.remove(i);
      }
    }
-   void dash() {
+ }
+  void dash() {
     if(dashTimer == 0) {
       dashTimer = 60;
       move(dX*10, dY*10);
     }
-  }
+ }
 }

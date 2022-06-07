@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 int score = 0;
 static int hiScore;
-Player player;
+static Player player;
 ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int level;

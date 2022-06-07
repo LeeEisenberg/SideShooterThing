@@ -83,4 +83,7 @@ public class Projectile{
   Projectile copy(Projectile p) {
     return new Projectile(p.size, p.xPos, p.yPos, p.dX, p.dY, p.damage, p.hue, p.friendly);
   }
+  void apply(){
+    Game.player.HP -= damage;
+  }
 }
