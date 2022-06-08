@@ -37,4 +37,17 @@ public class Powerup extends Projectile{
       //damage buff or smth
     }
   }
+  
+  public void render(){
+    tint(hue);
+    if(!friendly) {
+      pushMatrix();
+      scale( -1, 1 );
+      image(powerup, -xPos, yPos);
+      popMatrix();
+    }else {
+      image(powerup, xPos, yPos);
+    }
+    tint(255);
+  }
 }
