@@ -6,6 +6,7 @@ public class Player extends SpaceShip {
   private Weapon secondary;
   public int power1Time;
   public int power3Time;
+  
   public Player() {
     super(2);
     dX = 0;
@@ -17,7 +18,7 @@ public class Player extends SpaceShip {
     left = false;
     right = false;
     sprite = loadImage("sprites/player.png");
-    secondary = new Weapon(3);
+    secondary = new Weapon(5);
     cannon = new SpecialWeapon();
   }
  
@@ -26,7 +27,7 @@ public class Player extends SpaceShip {
   }
   void render() {
     imageMode(CENTER);
-    if(power1Time > 0){
+    if(power1Time > 0) {
       tint(100, 100, 255);
     }
     image(sprite, x, y);
@@ -37,10 +38,10 @@ public class Player extends SpaceShip {
     if(dashTimer > 0){
       dashTimer--;
     }
-    if (power1Time > 0){
+    if(power1Time > 0) {
       power1Time--;
     }
-    if (power3Time > 0){
+    if(power3Time > 0) {
       power3Time--;
     }
   }
@@ -99,7 +100,7 @@ public class Player extends SpaceShip {
      for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-         if (power1Time <= 0 || b.damage < .1){
+         if(power1Time <= 0 || b.damage < .1){
            b.apply();
          }
          projectiles.remove(i);
@@ -109,10 +110,10 @@ public class Player extends SpaceShip {
    void dash() {
     if(dashTimer == 0) {
       power1Time += 5;
-      if (power3Time <= 0){
+      if(power3Time <= 0) {
         dashTimer = 100;
         move(dX*20, dY*20);
-      } else{
+      }else {
         move(dX*40, dY*40);
       }
     }

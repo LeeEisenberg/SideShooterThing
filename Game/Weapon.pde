@@ -8,14 +8,18 @@ public class Weapon {
     ammo[0] = active;
     pattern = pattern_;
   }
+  public Weapon(int pattern_, boolean isPierce){
+    this(pattern_);
+    ammo[0].pierce = isPierce;
+  }
   public Weapon(){
     this(1);
   }
   void fire(float x, float y, boolean friendly) {
     if (pattern == 3){//3 bullets at a spread
-      Projectile bullet1 = new Projectile(255, 75, 0);
-      Projectile bullet2 = new Projectile(255, 75, 0);
-      Projectile bullet3 = new Projectile(255, 75, 0);
+      Projectile bullet1 = new Projectile(255, 150, 150);
+      Projectile bullet2 = new Projectile(255, 150, 150);
+      Projectile bullet3 = new Projectile(255, 150, 150);
       bullet1.setxPos(x);
       bullet1.setyPos(y+30);
       bullet2.setxPos(x);
@@ -40,14 +44,14 @@ public class Weapon {
     //maybe scale this to ship size??
       Projectile bullet1 = new Projectile();
       Projectile bullet2 = new Projectile();
-      if (pattern == 4){
-        bullet1.damage = 15;
-        bullet2.damage = 15;
-      }
       bullet1.setxPos(x);
       bullet1.setyPos(y+30);
       bullet2.setxPos(x);
       bullet2.setyPos(y-30);
+      if(pattern == 4) {
+        bullet1.damage = 15;
+        bullet2.damage = 15;
+      }
       if (!friendly){
         bullet1.dX *= -1;
         bullet1.friendly = false;
@@ -65,6 +69,17 @@ public class Weapon {
         bullet.friendly = false;
       }
       projectiles.add(bullet);
+    }else if(pattern == 5) {
+      if(player.cannon.charge >= 5) {
+      Projectile bullet = new Projectile();
+      bullet.pierce = true;
+      bullet.setxPos(x);
+      bullet.setyPos(y);
+      bullet.damage = 5;
+      bullet.dX *=2;
+      projectiles.add(bullet);
+      player.cannon.charge-=5;
+    }
     }
   }
 }

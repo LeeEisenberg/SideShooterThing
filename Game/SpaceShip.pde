@@ -24,7 +24,7 @@ public class SpaceShip {
      HP = HP_;
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
-     drops.add(new Powerup((int) random(1, 4)));//chance to not spawn is 0 for testing
+     drops.add(new Powerup((int) random(1, 7)));//chance to not spawn (not currently working)
      for (int i = drops.size()-1; i > 0; i--){
        if (drops.get(i).dX > 100){
          drops.remove(i);
@@ -51,7 +51,9 @@ public class SpaceShip {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && b.friendly) {
          HP -= b.damage;
-         projectiles.remove(i);
+         if(!projectiles.get(i).pierce){
+           projectiles.remove(i);
+         }
        }
      }
    }
