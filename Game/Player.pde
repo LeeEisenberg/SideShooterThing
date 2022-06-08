@@ -40,6 +40,9 @@ public class Player extends SpaceShip {
     if (power1Time > 0){
       power1Time--;
     }
+    if (power3Time > 0){
+      power3Time--;
+    }
   }
   void move(boolean up, boolean down, boolean left, boolean right) {
     if(up) {
@@ -96,7 +99,7 @@ public class Player extends SpaceShip {
      for(int i = projectiles.size()-1; i >= 0; i--) {
        Projectile b = projectiles.get(i);
        if(dist(x, y, b.xPos, b.yPos) <= size/2 && !b.friendly) {
-         if (power1Time <= 0){
+         if (power1Time <= 0 || b.damage < .1){
            b.apply();
          }
          projectiles.remove(i);
@@ -106,8 +109,12 @@ public class Player extends SpaceShip {
    void dash() {
     if(dashTimer == 0) {
       power1Time += 5;
-      dashTimer = 60;
-      move(dX*20, dY*20);
+      if (power3Time <= 0){
+        dashTimer = 100;
+        move(dX*20, dY*20);
+      } else{
+        move(dX*40, dY*40);
+      }
     }
   }
 }

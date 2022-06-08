@@ -22,7 +22,7 @@ public class Powerup extends Projectile{
   
   public void apply(){
     if (effectType == 1){
-      if (Game.player.power1Time < 10000){
+      if (Game.player.power1Time < 500){
         Game.player.power1Time = 500;
       }
     }
@@ -34,7 +34,9 @@ public class Powerup extends Projectile{
       }
     }
     if (effectType == 3){
-      //damage buff or smth
+      if (Game.player.power3Time < 300){
+        Game.player.power3Time = 200;
+      }
     }
   }
   
