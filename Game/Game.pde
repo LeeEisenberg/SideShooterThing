@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 int score = 0;
 static int hiScore;
@@ -7,6 +6,7 @@ ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int level;
 PImage[] sprites;
+PImage powerup;
 PImage[] piercing;
 PImage background;
 PImage special[];
@@ -20,13 +20,14 @@ void setup(){
   frameRate(60);
   size(1500,1000);
   player = new Player();
-  wave = new EnemyWave();
+  wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
   sprites = new PImage[4];
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
   }
+  powerup = loadImage("sprites/powerup.png");
   special = new PImage[75];
   for(int i = 0; i<=9; i++) {
     special[i] = loadImage("sprites/flash"+(i+1)+".png");
@@ -53,7 +54,7 @@ void draw(){
     
     if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
       level++;
-      wave = new EnemyWave(level % 2);//check this later
+      wave = new EnemyWave((int) random(3));//check this later
     }
     if(!specialAnim){
       for (int x = 0; x < projectiles.size(); x++){

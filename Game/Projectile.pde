@@ -1,15 +1,17 @@
 public class Projectile{
   private float size;
-  private float xPos;
-  private float yPos;
+  protected float xPos;
+  protected float yPos;
   public float dX;
   private float dY;
   public double damage;
   private int type;
-  private color hue;
+  protected color hue;
   public boolean friendly;
   public int frame;
   public boolean pierce;
+  private PImage temp;
+  
   public Projectile(){
     size = 10;
     xPos = 200;
@@ -64,10 +66,7 @@ public class Projectile{
       popMatrix();
     }else {
       if(pierce){
-        pushMatrix();
-        scale(2);
         image(piercing[0], xPos, yPos);
-        popMatrix();
       }else{
          image(sprites[frame], xPos, yPos);
       }

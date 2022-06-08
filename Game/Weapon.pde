@@ -40,7 +40,7 @@ public class Weapon {
       projectiles.add(bullet2);
       projectiles.add(bullet3);
     }
-    if (pattern == 2){//2 bullets next to each other
+    if (pattern == 2 || pattern == 4){//2 bullets next to each other
     //maybe scale this to ship size??
       Projectile bullet1 = new Projectile();
       Projectile bullet2 = new Projectile();
@@ -48,6 +48,10 @@ public class Weapon {
       bullet1.setyPos(y+30);
       bullet2.setxPos(x);
       bullet2.setyPos(y-30);
+      if(pattern == 4) {
+        bullet1.damage = 15;
+        bullet2.damage = 15;
+      }
       if (!friendly){
         bullet1.dX *= -1;
         bullet1.friendly = false;
@@ -65,7 +69,7 @@ public class Weapon {
         bullet.friendly = false;
       }
       projectiles.add(bullet);
-    }else if(pattern == 4) {
+    }else if(pattern == 5) {
       if(player.cannon.charge >= 5) {
       Projectile bullet = new Projectile();
       bullet.pierce = true;
