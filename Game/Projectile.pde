@@ -1,14 +1,15 @@
 public class Projectile{
   private float size;
-  private float xPos;
-  private float yPos;
+  protected float xPos;
+  protected float yPos;
   public float dX;
   private float dY;
   public double damage;
   private int type;
-  private color hue;
+  protected color hue;
   public boolean friendly;
   public int frame;
+  private PImage temp;
   
   public Projectile(){
     size = 10;

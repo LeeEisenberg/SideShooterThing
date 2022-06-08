@@ -6,6 +6,7 @@ ArrayList<Projectile> projectiles;
 EnemyWave wave;
 int level;
 PImage[] sprites;
+PImage powerup;
 PImage background;
 PImage special[];
 PImage flash;
@@ -23,8 +24,8 @@ void setup(){
   sprites = new PImage[4];
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
-      sprites[i].filter(GRAY);
   }
+  powerup = loadImage("sprites/powerup.png");
   special = new PImage[75];
   for(int i = 0; i<=9; i++) {
     special[i] = loadImage("sprites/flash"+(i+1)+".png");
