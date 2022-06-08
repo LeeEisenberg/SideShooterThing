@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.ArrayDeque;
+import java.util.Arrays;
 public class EnemyWave{
   public ArrayList<SpaceShip> fleet;
   private ArrayDeque<float[]> flightPlan;
@@ -69,7 +70,7 @@ public class EnemyWave{
         }
       } else{
         fleet.get(x).move(temp[0],temp[1]);
-        if (fleet.get(x).x % 40 == 0){
+        if (Arrays.binarySearch(flightPlan.peek(), (x+1) / 10.0) >= 0){
           fleet.get(x).fire(); //maybe space the firing out a bit
         }
       }
