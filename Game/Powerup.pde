@@ -42,14 +42,7 @@ public class Powerup extends Projectile{
   
   public void render(){
     tint(hue);
-    if(!friendly) {
-      pushMatrix();
-      scale( -1, 1 );
-      image(powerup, -xPos, yPos);
-      popMatrix();
-    }else {
-      image(powerup, xPos, yPos);
-    }
+    image(powerup, xPos, yPos);
     tint(255);
   }
 }
