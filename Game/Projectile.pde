@@ -64,7 +64,7 @@ public class Projectile{
       popMatrix();
     }else {
       if(pierce){
-        image(piercing[frame], xPos, yPos);
+        image(piercing[0], xPos, yPos);
       }else{
          image(sprites[frame], xPos, yPos);
       }

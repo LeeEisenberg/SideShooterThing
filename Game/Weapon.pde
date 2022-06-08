@@ -66,6 +66,7 @@ public class Weapon {
       }
       projectiles.add(bullet);
     }else if(pattern == 4) {
+      if(player.cannon.charge >= 5) {
       Projectile bullet = new Projectile();
       bullet.pierce = true;
       bullet.setxPos(x);
@@ -73,6 +74,8 @@ public class Weapon {
       bullet.damage = 5;
       bullet.dX *=2;
       projectiles.add(bullet);
+      player.cannon.charge-=5;
+    }
     }
   }
 }
