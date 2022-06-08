@@ -31,10 +31,6 @@ void setup(){
   for(int i = 0; i<=9; i++) {
     special[i] = loadImage("sprites/flash"+(i+1)+".png");
   }
-  lightning = new PImage[7];
-  for(int i = 0; i < 7; i++) {
-    lightning[i] = loadImage("sprites/light"+(i+1)+".png");
-  }
   piercing = new PImage[4];
   for(int i = 0; i < 4; i++) {
     piercing[i] = loadImage("sprites/pierce"+(i+1)+".png");

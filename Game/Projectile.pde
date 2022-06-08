@@ -64,7 +64,10 @@ public class Projectile{
       popMatrix();
     }else {
       if(pierce){
+        pushMatrix();
+        scale(2);
         image(piercing[0], xPos, yPos);
+        popMatrix();
       }else{
          image(sprites[frame], xPos, yPos);
       }
