@@ -11,6 +11,8 @@ public class Projectile{
   public int frame;
   public boolean pierce;
   private PImage temp;
+  public boolean homed;
+  public SpaceShip target;
   
   public Projectile(){
     size = 10;
@@ -51,8 +53,21 @@ public class Projectile{
     this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
     pierce = pierce_;
   }
-  
+  public void home() {
+    if(wave.fleet.size() != 0 && friendly) {
+      if(!homed || wave.fleet.indexOf(target) == -1) {
+        target = wave.fleet.get((int)random(wave.fleet.size()));
+        homed = true;
+      }  
+      SpaceShip e = target;
+      float delX = e.x - xPos;
+      float delY = e.y - yPos;
+      dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
+      dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+    }
+  }
   public void move(){
+    home();
     xPos += dX;
     yPos += dY;
   }
