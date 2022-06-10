@@ -87,9 +87,17 @@ public class Projectile{
       popMatrix();
     }else {
       if(pierce){
-        image(piercing[0], xPos, yPos);
+        pushMatrix();
+        translate(xPos, yPos);
+        scale(2);
+        image(piercing[0], 0, 0);
+        popMatrix();
       }if(homing){
-        image(rockets[frame], xPos, yPos);
+        pushMatrix();
+        translate(xPos, yPos);
+        rotate(atan(dY/dX));
+        image(rockets[frame], 0, 0);
+        popMatrix();
       }else{
          image(sprites[frame], xPos, yPos);
       }
