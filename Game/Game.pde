@@ -24,7 +24,7 @@ int frame;
 void setup(){
   frameRate(60);
   size(1500,1000);
-  player = new Player(0);
+  player = new Player(1);
   wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
@@ -123,6 +123,24 @@ void keyPressed() {
   if(key == CODED && keyCode == SHIFT) {
     player.dash();
   }
+  //case ' ':
+  //      weapon.fire(x, y, true);
+  //      break;
+  //    case 'e':
+  //      cannon.activate((int)x, (int)y);
+  //      break;
+  //    case 'f':
+  //      secondary.fire(x, y, true);
+  //      break;
+  if(key == ' ' && !player.cannon.active) {
+    player.weapon.fire(player.x, player.y, true);
+  }
+  if(key == 'e') {
+    player.cannon.activate((int)player.x, (int)player.y);
+  }
+  if(key == 'f') {
+    player.secondary.fire(player.x, player.y, true);
+  }
 } 
 
 void keyReleased() {
@@ -131,18 +149,9 @@ void keyReleased() {
 
 void mousePressed(){
   if (mouseButton == LEFT){
-    player.setDir(' ', true);
+    player.weapon.fire(player.x, player.y, true);
   }
   if (mouseButton == RIGHT){
-    player.setDir('f', true);
-  }
-}
-
-void mouseReleased(){
-  if (mouseButton == LEFT){
-    player.setDir(' ', false);
-  }
-  if (mouseButton == RIGHT){
-    player.setDir('f', false);
+    player.secondary.fire(player.x, player.y, true);
   }
 }
