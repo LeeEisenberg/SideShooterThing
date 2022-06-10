@@ -42,6 +42,7 @@ public class SpaceShip {
      x += x_;
      y += y_*multiplier;
    }
+   
    void render() {
      sprite.resize((int)(224 * size/150), (int)(148 * size/150));
      image(sprite, x, y);

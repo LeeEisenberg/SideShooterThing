@@ -71,15 +71,25 @@ public class Weapon {
       projectiles.add(bullet);
     }else if(pattern == 5) {
       if(player.cannon.charge >= 5) {
-      Projectile bullet = new Projectile();
-      bullet.pierce = true;
-      bullet.setxPos(x);
-      bullet.setyPos(y);
-      bullet.damage = 5;
-      bullet.dX *=2;
-      projectiles.add(bullet);
-      player.cannon.charge-=5;
-    }
+        Projectile bullet = new Projectile();
+        bullet.pierce = true;
+        bullet.setxPos(x);
+        bullet.setyPos(y);
+        bullet.damage = 5;
+        bullet.dX *=2;
+        projectiles.add(bullet);
+        player.cannon.charge-=5;
+      }
+    }else if(pattern == 6) {
+      if(player.cannon.charge >=7) {
+      Projectile rocket = new Projectile();
+      rocket.homing = true;
+      rocket.setxPos(x);
+      rocket.setyPos(y);
+      rocket.damage = 20;
+      projectiles.add(rocket);
+      player.cannon.charge -= 7;
+      }
     }
   }
 }

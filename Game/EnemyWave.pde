@@ -22,13 +22,13 @@ public class EnemyWave {
       fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/10.0)), 1, -1));
       fleet.add(new SpaceShip(1600, 800, 75, 50*(1+(level/10.0)), 1, -1));
       flightPlan = new ArrayDeque<float[]>();
-      for (int i = 0; i < 7; i++){
+      for (int i = 0; i < 8; i++){
         flightPlan.add(new float[] {-1, 1, 30, 30});
         flightPlan.add(new float[] {-1, 1, 0, 0, .01, .02, .03, .07, .08, .09});
         flightPlan.add(new float[] {-1, 1, 30, 30});
         flightPlan.add(new float[] {-1, 1, 0, 0, .04, .05, .06});
       }
-      for (int i = 0; i < 7; i++){
+      for (int i = 0; i < 8; i++){
         flightPlan.add(new float[] {-1, -1, 30, 30});
         flightPlan.add(new float[] {-1, -1, 0, 0, .01, .02, .03, .07, .08, .09});
         flightPlan.add(new float[] {-1, -1, 30, 30});
