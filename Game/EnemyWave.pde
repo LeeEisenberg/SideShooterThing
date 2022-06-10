@@ -52,6 +52,7 @@ public class EnemyWave{
       fleet.add(new SpaceShip(1600, 800, 100, 100*(1+(level/10.0)), 1));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-1, 0, 200, 0});
+      flightPlan.add(new float[] {-1, 0, 1, 0, .01, .02, .03, .04});
       flightPlan.add(new float[] {-1, 2, 50, 100});
       flightPlan.add(new float[] {-1, -2, 100, 100});
     }
@@ -69,10 +70,10 @@ public class EnemyWave{
           player.cannon.charge += 10;
         }
       } else{
-        fleet.get(x).move(temp[0],temp[1]);
-        if (Arrays.binarySearch(flightPlan.peek(), (x+1) / 10.0) >= 0){
+        if (Arrays.binarySearch(temp, (x+1) / 100.0) >= 0){
           fleet.get(x).fire(); //maybe space the firing out a bit
         }
+        fleet.get(x).move(temp[0],temp[1]);
       }
     }
     if (temp[2] > 0){
