@@ -11,6 +11,7 @@ public class Projectile{
   public int frame;
   public boolean pierce;
   private PImage temp;
+  public boolean homing;
   public boolean homed;
   public SpaceShip target;
   
@@ -53,6 +54,11 @@ public class Projectile{
     this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
     pierce = pierce_;
   }
+  public Projectile(float size_, float xPos_, float yPos_, float dX_, float dY_, double damage_, color hue_, boolean friendly_, boolean homing_, boolean pierce_){
+    this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
+    homing = homing_;
+    pierce = pierce_;
+  }
   public void home() {
     if(wave.fleet.size() != 0 && friendly) {
       if(!homed || wave.fleet.indexOf(target) == -1) {
@@ -67,7 +73,7 @@ public class Projectile{
     }
   }
   public void move(){
-    home();
+    if(homing){home();}
     xPos += dX;
     yPos += dY;
   }
@@ -82,6 +88,8 @@ public class Projectile{
     }else {
       if(pierce){
         image(piercing[0], xPos, yPos);
+      }if(homing){
+        image(rockets[frame], xPos, yPos);
       }else{
          image(sprites[frame], xPos, yPos);
       }

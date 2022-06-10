@@ -13,6 +13,8 @@ PImage special[];
 PImage flash;
 PImage[] lightning;
 PImage light;
+PImage[] rockets;
+
 boolean specialAnim;
 int frame;
 
@@ -35,6 +37,10 @@ void setup(){
   piercing = new PImage[4];
   for(int i = 0; i < 4; i++) {
     piercing[i] = loadImage("sprites/pierce"+(i+1)+".png");
+  }
+  rockets = new PImage[4];
+  for(int i = 0; i < 4; i++) {
+    rockets[i] = loadImage("sprites/rocket" +(i+1)+".png");
   }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
