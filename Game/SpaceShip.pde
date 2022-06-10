@@ -5,6 +5,7 @@ public class SpaceShip {
    protected Weapon weapon;
    protected ArrayList<Projectile> drops = new ArrayList<Projectile>();
    protected PImage sprite;
+   private double multiplier;
    public SpaceShip() {
      x = 0;
      y = 500;
@@ -13,9 +14,10 @@ public class SpaceShip {
      weapon = new Weapon();
      sprite = loadImage("sprites/ship.png");
    }
-   public SpaceShip(int pattern){
+   public SpaceShip(int pattern, double mult){
      this();
      weapon = new Weapon(pattern);
+     multiplier = mult;
    }
    public SpaceShip(float x_, float y_, float size_, float HP_){
      x = x_;
@@ -31,13 +33,14 @@ public class SpaceShip {
        }
      }
    }
-   public SpaceShip(float x_, float y_, float size_, float HP_, int pattern){
+   public SpaceShip(float x_, float y_, float size_, float HP_, int pattern, double mult){
      this(x_, y_, size_, HP_);
      weapon = new Weapon(pattern);
+     multiplier = mult;
    }
    void move(float x_, float y_) {
-     x = x_+x;
-     y = y_+y;
+     x += x_;
+     y += y_*multiplier;
    }
    void render() {
      sprite.resize((int)(224 * size/150), (int)(148 * size/150));
