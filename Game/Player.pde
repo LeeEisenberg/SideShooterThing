@@ -7,7 +7,7 @@ public class Player extends SpaceShip {
   public int power1Time;
   public int power3Time;
   
-  public Player() {
+  public Player(int loadout) {
     super(2);
     dX = 0;
     dY = 0;
@@ -19,7 +19,7 @@ public class Player extends SpaceShip {
     right = false;
     sprite = loadImage("sprites/player.png");
     secondary = new Weapon(6);
-    cannon = new SpecialWeapon();
+    cannon = new SpecialWeapon(loadout);
   }
  
   void move() {

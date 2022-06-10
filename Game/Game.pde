@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import processing.sound.*;
+
 int score = 0;
 static int hiScore;
 static Player player;
@@ -14,14 +16,15 @@ PImage flash;
 PImage[] lightning;
 PImage light;
 PImage[] rockets;
-
+SoundFile cannonyell;
+SoundFile sundaybest;
 boolean specialAnim;
 int frame;
 
 void setup(){
   frameRate(60);
   size(1500,1000);
-  player = new Player();
+  player = new Player(0);
   wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
@@ -45,6 +48,8 @@ void setup(){
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
   specialAnim = false;
+  cannonyell = new SoundFile(this, "sounds/protoncannon.mp3");
+  sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
 }
 void draw(){
     image(background, 750, 500);
@@ -90,7 +95,6 @@ void draw(){
       }
     }
     if (player.HP < 1){
-      player = new Player();
       wave = new EnemyWave();
       projectiles = new ArrayList<Projectile>();
       level = 0;
