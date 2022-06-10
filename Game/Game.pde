@@ -5,6 +5,8 @@ int score = 0;
 static int hiScore;
 static Player player;
 ArrayList<Projectile> projectiles;
+ArrayDeque<SpaceShip> toExplode;
+ArrayList<Explosion> gonnaexplodethis;
 EnemyWave wave;
 int level;
 PImage[] sprites;
@@ -16,6 +18,7 @@ PImage flash;
 PImage[] lightning;
 PImage light;
 PImage[] rockets;
+PImage[] explosions;
 SoundFile cannonyell;
 SoundFile sundaybest;
 boolean specialAnim;
@@ -25,6 +28,8 @@ void setup(){
   frameRate(60);
   size(1500,1000);
   player = new Player(1);
+  toExplode = new ArrayDeque();
+  gonnaexplodethis = new ArrayList<Explosion>();
   wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
@@ -44,6 +49,10 @@ void setup(){
   rockets = new PImage[4];
   for(int i = 0; i < 4; i++) {
     rockets[i] = loadImage("sprites/rocket" +(i+1)+".png");
+  }
+  explosions = new PImage[12];
+  for(int i = 0; i < 12; i++) {
+    explosions[i] = loadImage("sprites/explode"+(i+1)+".png");
   }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
@@ -101,7 +110,20 @@ void draw(){
       player.HP = 100;
     }
     
-    
+    if(toExplode.size() >=1) {
+      for(int i = 0; i < toExplode.size(); i++) {
+        gonnaexplodethis.add(new Explosion(toExplode.peek().x, toExplode.peek().y, (int)(toExplode.peek().size/25)));
+        toExplode.removeFirst();
+      }
+    }
+    if(gonnaexplodethis.size() > 0) {
+      for(int i = 0; i < gonnaexplodethis.size(); i++) {
+        Explosion e = gonnaexplodethis.get(i);
+        e.exAnim();
+        if(e.done) {
+          gonnaexplodethis.remove(e);
+        }
+      }
   if(specialAnim) {
     frameRate(15);
     frame = (frame)%10;
@@ -113,6 +135,8 @@ void draw(){
     if(frame == 10) {
       specialAnim = false;
       frameRate(60);
+    }
+    
     }
   }
   

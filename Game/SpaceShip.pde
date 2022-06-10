@@ -6,6 +6,8 @@ public class SpaceShip {
    protected ArrayList<Projectile> drops = new ArrayList<Projectile>();
    protected PImage sprite;
    private double multiplier;
+   public int exFrame;
+   public boolean exploding;
    public SpaceShip() {
      x = 0;
      y = 500;
@@ -20,6 +22,7 @@ public class SpaceShip {
      multiplier = mult;
    }
    public SpaceShip(float x_, float y_, float size_, float HP_){
+     exploding = false;
      x = x_;
      y = y_;
      size = size_;
