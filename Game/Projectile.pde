@@ -11,6 +11,9 @@ public class Projectile{
   public int frame;
   public boolean pierce;
   private PImage temp;
+  public boolean homing;
+  public boolean homed;
+  public SpaceShip target;
   
   public Projectile(){
     size = 10;
@@ -51,8 +54,26 @@ public class Projectile{
     this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
     pierce = pierce_;
   }
-  
+  public Projectile(float size_, float xPos_, float yPos_, float dX_, float dY_, double damage_, color hue_, boolean friendly_, boolean homing_, boolean pierce_){
+    this(size_, xPos_, yPos_, dX_, dY_, damage_, hue_, friendly_);
+    homing = homing_;
+    pierce = pierce_;
+  }
+  public void home() {
+    if(wave.fleet.size() != 0 && friendly) {
+      if(!homed || wave.fleet.indexOf(target) == -1) {
+        target = wave.fleet.get((int)random(wave.fleet.size()));
+        homed = true;
+      }  
+      SpaceShip e = target;
+      float delX = e.x - xPos;
+      float delY = e.y - yPos;
+      dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
+      dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+    }
+  }
   public void move(){
+    if(homing){home();}
     xPos += dX;
     yPos += dY;
   }
@@ -66,7 +87,17 @@ public class Projectile{
       popMatrix();
     }else {
       if(pierce){
-        image(piercing[0], xPos, yPos);
+        pushMatrix();
+        translate(xPos, yPos);
+        scale(2);
+        image(piercing[0], 0, 0);
+        popMatrix();
+      }if(homing){
+        pushMatrix();
+        translate(xPos, yPos);
+        rotate(atan(dY/dX));
+        image(rockets[frame], 0, 0);
+        popMatrix();
       }else{
          image(sprites[frame], xPos, yPos);
       }
