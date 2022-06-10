@@ -6,7 +6,7 @@ public class EnemyWave {
   private ArrayDeque<float[]> flightPlan;
   
   public EnemyWave(){
-    this((int) random(4));
+    this((int) random(3));
   }
   
   public EnemyWave(int mode) {
@@ -15,9 +15,9 @@ public class EnemyWave {
       fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/10.0)), 1, 1));
       fleet.add(new SpaceShip(1700, 100, 75, 50*(1+(level/10.0)), 1, 1));
       fleet.add(new SpaceShip(1700, 300, 75, 50*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1600, 400, 75, 50*(1+(level/10.0)), 1, 0));
-      fleet.add(new SpaceShip(1600, 600, 75, 50*(1+(level/10.0)), 1, 0));
-      fleet.add(new SpaceShip(1700, 500, 75, 50*(1+(level/10.0)), 1, 0));
+      fleet.add(new SpaceShip(1600, 400, 75, 50*(1+(level/10.0)), 3, 0));
+      fleet.add(new SpaceShip(1600, 600, 75, 50*(1+(level/10.0)), 3, 0));
+      fleet.add(new SpaceShip(1700, 500, 75, 50*(1+(level/10.0)), 3, 0));
       fleet.add(new SpaceShip(1700, 700, 75, 50*(1+(level/10.0)), 1, -1));
       fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/10.0)), 1, -1));
       fleet.add(new SpaceShip(1600, 800, 75, 50*(1+(level/10.0)), 1, -1));
@@ -37,14 +37,42 @@ public class EnemyWave {
     }
     if(mode == 1) {
       fleet.add(new SpaceShip(1600, 300, 150, 200*(1+(level/10.0)), 4, -1));
-      fleet.add(new SpaceShip(1600, 500, 150, 200*(1+(level/10.0)), 4, 0));
+      fleet.add(new SpaceShip(1600, 500, 150, 200*(1+(level/10.0)), 3, 0));
       fleet.add(new SpaceShip(1600, 700, 150, 200*(1+(level/10.0)), 4, 1));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-1, 0, 200, -1});
-      flightPlan.add(new float[] {-1, 2, 50, 100});
-      flightPlan.add(new float[] {0.5, 1, 50, 100});
-      flightPlan.add(new float[] {0.5, -1, 100, 100});
-      flightPlan.add(new float[] {-1, -2, 100, 100});
+      flightPlan.add(new float[] {-1, 2, 24, 24});
+      flightPlan.add(new float[] {-1, 2, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {-1, 2, 24, 24});
+      flightPlan.add(new float[] {-1, 2, 0, 0, .01, .03});
+      flightPlan.add(new float[] {0.5, 1, 24, 24});
+      flightPlan.add(new float[] {0.5, 1, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {0.5, 1, 24, 24});
+      flightPlan.add(new float[] {0.5, 1, 0, 0, .01, .03});
+      flightPlan.add(new float[] {0.5, 1, 24, 24});
+      flightPlan.add(new float[] {0.5, 1, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {0.5, 1, 24, 24});
+      flightPlan.add(new float[] {0.5, 1, 0, 0, .01, .03});
+      flightPlan.add(new float[] {0.5, -1, 24, 24});
+      flightPlan.add(new float[] {0.5, -1, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {0.5, -1, 24, 24});
+      flightPlan.add(new float[] {0.5, -1, 0, 0, .01, .03});
+      flightPlan.add(new float[] {0.5, -1, 24, 24});
+      flightPlan.add(new float[] {0.5, -1, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {0.5, -1, 24, 24});
+      flightPlan.add(new float[] {0.5, -1, 0, 0, .01, .03});
+      flightPlan.add(new float[] {-1, -2, 24, 24});
+      flightPlan.add(new float[] {-1, -2, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {-1, -2, 24, 24});
+      flightPlan.add(new float[] {-1, -2, 0, 0, .01, .03});
+      flightPlan.add(new float[] {-1, -2, 24, 24});
+      flightPlan.add(new float[] {-1, -2, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {-1, -2, 24, 24});
+      flightPlan.add(new float[] {-1, -2, 0, 0, .01, .03});
+      flightPlan.add(new float[] {-1, 2, 24, 24});
+      flightPlan.add(new float[] {-1, 2, 0, 0, .01, .02, .03});
+      flightPlan.add(new float[] {-1, 2, 24, 24});
+      flightPlan.add(new float[] {-1, 2, 0, 0, .01, .03});
     }
     if(mode == 0) {
       fleet.add(new SpaceShip(1600, 200, 100, 100*(1+(level/10.0)), 1, 1));
