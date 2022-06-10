@@ -6,6 +6,7 @@ public class SpecialWeapon {
   PImage[] cBases;
   private int frame;
   private int pattern;
+  public boolean active;
   public SpecialWeapon(int pattern_) {
     charge = 0;
     specialTimer = 0;
@@ -41,6 +42,8 @@ public class SpecialWeapon {
         projectiles.add(rocket);
       }
       specialTimer--;
+    }else {
+      active = false;
     }
   }
   void yell() {
@@ -58,6 +61,7 @@ public class SpecialWeapon {
       charge = 0;
       specialAnim = true;
       yell();
+      active = true;
     }
   }
 }
