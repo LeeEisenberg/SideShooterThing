@@ -98,6 +98,7 @@ void draw(){
       wave = new EnemyWave();
       projectiles = new ArrayList<Projectile>();
       level = 0;
+      player.HP = 100;
     }
     
     

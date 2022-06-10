@@ -18,7 +18,12 @@ public class Player extends SpaceShip {
     left = false;
     right = false;
     sprite = loadImage("sprites/player.png");
-    secondary = new Weapon(6);
+    if(loadout == 0) {
+      secondary = new Weapon(5);
+    }
+    if(loadout == 1) {
+      secondary = new Weapon(6);
+    }
     cannon = new SpecialWeapon(loadout);
   }
  
