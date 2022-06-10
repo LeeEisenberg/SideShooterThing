@@ -8,7 +8,7 @@ public class Player extends SpaceShip {
   public int power3Time;
   
   public Player(int loadout) {
-    super(2);
+    super(2, 1);
     dX = 0;
     dY = 0;
     basedX = 6.66;
