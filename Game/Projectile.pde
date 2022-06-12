@@ -10,10 +10,10 @@ public class Projectile{
   public boolean friendly;
   public int frame;
   public boolean pierce;
-  private PImage temp;
   public boolean homing;
   public boolean homed;
   public SpaceShip target;
+  
   
   public Projectile(){
     size = 10;
