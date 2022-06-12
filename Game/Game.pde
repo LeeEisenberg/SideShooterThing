@@ -87,6 +87,18 @@ void draw(){
     player.cannon.fire(player.x, player.y);
     }
     player.render();
+    if(player.x < 0) {
+      player.x = 0;
+    }
+    if(player.y < 0) {
+      player.y = 0;
+    }
+    if(player.x > width) {
+      player.x = width;
+    }
+    if(player.y > height) {
+      player.y = height;
+    }
     for (int x = 0; x < wave.fleet.size(); x++){
       wave.fleet.get(x).render();
     }
