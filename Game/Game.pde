@@ -30,6 +30,7 @@ boolean loadoutMenu;
 void setup(){
   frameRate(60);
   size(1500,1000);
+  textSize(100);
   startMenu = true;
   player = new Player(1);
   toExplode = new ArrayDeque();
@@ -65,7 +66,7 @@ void setup(){
   sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
 }
 void draw(){
-    if(!startMenu || !restartMenu){
+    if(!startMenu && !restartMenu && !loadoutMenu){
       rectMode(CORNER);
       textAlign(LEFT);
       image(background, 750, 500);
@@ -171,6 +172,22 @@ void draw(){
     text("Start?", width/4, height*3/4+37.5);
     text("Exit", width*3/4, height*3/4+37.5);
   }
+  if(loadoutMenu) {
+    background(0);
+    fill(255);
+    textAlign(CENTER);
+    rectMode(CENTER);
+    textSize(100);
+    text("PICK YOUR LOADOUT", width/2, height*3/10);
+    textSize(50);
+    rect(width/4, height/2+11, 500, 200);
+    rect(width*3/4, height/2+11, 500, 200);
+    fill(0);
+    text("Proton Cannon", width/4, height/2);
+    text("Piercing Shot", width/4, height/2 + 50);
+    text("Missle Barrage", width*3/4, height/2);
+    text("Homing Missle", width*3/4, height/2+50);
+  }
 }
  
 void keyPressed() {
@@ -207,11 +224,24 @@ void mousePressed(){
     if(mouseY <= height*3/4 +50 && mouseY >= height*3/4 - 50) {
       if(mouseX <= width/4 + 250 && mouseX >= width/4 -250) {
         startMenu = false;
+        loadoutMenu = true;
       }
       if(mouseX <= width*3/4 + 250 && mouseX >= width *3/4 -250) {
         exit();
       }
     } 
+  }
+  if(loadoutMenu) {
+    if(mouseY <= height/2+100 && mouseY >= height/2-100) {
+      if(mouseX <= width/4 + 250 && mouseX >= width/4 - 250) {
+        player = new Player(0);
+        loadoutMenu = false;
+      }
+      if(mouseX <= width*3/4 + 250 && mouseX >= width*3/4 - 250) {
+        player = new Player(1);
+        loadoutMenu = false;
+      }
+    }
   }
   if(!startMenu || !restartMenu || !loadoutMenu){
     if (mouseButton == LEFT){
