@@ -125,8 +125,7 @@ void draw(){
       }
       for (int x = 0; x < wave.fleet.size(); x++){
         if (wave.fleet.get(x).x < 0){
-          player.HP = 0;
-          x = wave.fleet.size();
+          restartMenu = true;
         }
       }
       if (player.HP < 1){
@@ -194,6 +193,21 @@ void draw(){
     text("Missle Barrage", width*3/4, height/2);
     text("Homing Missle", width*3/4, height/2+50);
   }
+  if(restartMenu) {
+    rectMode(CENTER);
+    fill(255);
+    rect(width/2, height/2, 1100, 600);
+    textSize(100);
+    textAlign(CENTER);
+    fill(0);
+    text("You Lost...", width/2, height*5/12);
+    rect(width/4, height*7/12, 300, 100);
+    rect(width*3/4, height*7/12, 300, 100);
+    textSize(50);
+    fill(255);
+    text("Restart", width/4, height*7/12+17);
+    text("Exit", width*3/4, height*7/12+17);
+  }
 }
  
 void keyPressed() {
@@ -201,15 +215,6 @@ void keyPressed() {
   if(key == CODED && keyCode == SHIFT) {
     player.dash();
   }
-  //case ' ':
-  //      weapon.fire(x, y, true);
-  //      break;
-  //    case 'e':
-  //      cannon.activate((int)x, (int)y);
-  //      break;
-  //    case 'f':
-  //      secondary.fire(x, y, true);
-  //      break;
   if(key == ' ' && !player.cannon.active) {
     player.weapon.fire(player.x, player.y, true);
   }
@@ -218,6 +223,7 @@ void keyPressed() {
   }
   if(key == 'f') {
     player.secondary.fire(player.x, player.y, true);
+    restartMenu = true;
   }
 } 
 
