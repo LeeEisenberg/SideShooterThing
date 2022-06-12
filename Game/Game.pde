@@ -129,10 +129,7 @@ void draw(){
         }
       }
       if (player.HP < 1){
-        wave = new EnemyWave();
-        projectiles = new ArrayList<Projectile>();
-        level = 0;
-        player.HP = 100;
+        restartMenu = true;
       }
       
       if(toExplode.size() >=1) {
@@ -252,6 +249,22 @@ void mousePressed(){
       if(mouseX <= width*3/4 + 250 && mouseX >= width*3/4 - 250) {
         player = new Player(1);
         loadoutMenu = false;
+      }
+    }
+  }
+  if(restartMenu) {
+    if(mouseY <= height*7/12+50 && mouseY >= height*7/12-50) {
+      if(mouseX <= width/4 +150 && mouseX >= width/4 - 150) {
+        wave = new EnemyWave();
+        projectiles = new ArrayList<Projectile>();
+        level = 0;
+        player.HP = 100;
+        player.x = 0;
+        player.y = height/2;
+        restartMenu = false;
+      }
+      if(mouseX <= width*3/4 + 150 && mouseX >= width*3/4 -150) {
+        exit();
       }
     }
   }
