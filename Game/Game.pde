@@ -23,10 +23,14 @@ SoundFile cannonyell;
 SoundFile sundaybest;
 boolean specialAnim;
 int frame;
+boolean startMenu;
+boolean restartMenu;
+boolean loadoutMenu;
 
 void setup(){
   frameRate(60);
   size(1500,1000);
+  startMenu = true;
   player = new Player(1);
   toExplode = new ArrayDeque();
   gonnaexplodethis = new ArrayList<Explosion>();
@@ -61,97 +65,112 @@ void setup(){
   sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
 }
 void draw(){
-    image(background, 750, 500);
-    textSize(100);
-    fill(255);
-    text("Wave: " + (level+1), 20, 100);
-    fill(128);
-    rect(1100, 50, 200, 50);
-    fill(0, 0, 255);
-    rect(1100, 50, 2*player.cannon.charge, 50);
-    fill(255-player.HP, 255-2*(100-player.HP), 0);
-    rect(750-player.HP*2.5, 0, player.HP*5, 100);
-    
-    if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
-      level++;
-      wave = new EnemyWave((int) random(3));//check this later
-    }
-    if(!specialAnim){
-      for (int x = 0; x < projectiles.size(); x++){
-        projectiles.get(x).move();
+    if(!startMenu || !restartMenu){
+      rectMode(CORNER);
+      textAlign(LEFT);
+      image(background, 750, 500);
+      textSize(100);
+      fill(255);
+      text("Wave: " + (level+1), 20, 100);
+      fill(128);
+      rect(1100, 50, 200, 50);
+      fill(0, 0, 255);
+      rect(1100, 50, 2*player.cannon.charge, 50);
+      fill(255-player.HP, 255-2*(100-player.HP), 0);
+      rect(750-player.HP*2.5, 0, player.HP*5, 100);
+      
+      if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
+        level++;
+        wave = new EnemyWave((int) random(3));//check this later
       }
-      wave.move();
-      if(player.cannon.specialTimer > 0) {
-      player.cannon.specialTimer--;
-    }
-    player.cannon.fire(player.x, player.y);
-    }
-    player.render();
-    if(player.x < 0) {
-      player.x = 0;
-    }
-    if(player.y < 0) {
-      player.y = 0;
-    }
-    if(player.x > width) {
-      player.x = width;
-    }
-    if(player.y > height) {
-      player.y = height;
-    }
-    for (int x = 0; x < wave.fleet.size(); x++){
-      wave.fleet.get(x).render();
-    }
-    for (int i = 0; i < projectiles.size(); i++){
-      Projectile p = projectiles.get(i);
-      p.render();
-      if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
-        projectiles.remove(i);
+      if(!specialAnim){
+        for (int x = 0; x < projectiles.size(); x++){
+          projectiles.get(x).move();
+        }
+        wave.move();
+        if(player.cannon.specialTimer > 0) {
+        player.cannon.specialTimer--;
       }
-    }
-    for (int x = 0; x < wave.fleet.size(); x++){
-      if (wave.fleet.get(x).x < 0){
-        player.HP = 0;
-        x = wave.fleet.size();
+      player.cannon.fire(player.x, player.y);
       }
-    }
-    if (player.HP < 1){
-      wave = new EnemyWave();
-      projectiles = new ArrayList<Projectile>();
-      level = 0;
-      player.HP = 100;
-    }
-    
-    if(toExplode.size() >=1) {
-      for(int i = 0; i < toExplode.size(); i++) {
-        gonnaexplodethis.add(new Explosion(toExplode.peek().x, toExplode.peek().y, (int)(toExplode.peek().size/25)));
-        toExplode.removeFirst();
+      player.render();
+      if(player.x < 0) {
+        player.x = 0;
       }
-    }
-    if(gonnaexplodethis.size() > 0) {
-      for(int i = 0; i < gonnaexplodethis.size(); i++) {
-        Explosion e = gonnaexplodethis.get(i);
-        e.exAnim();
-        if(e.done) {
-          gonnaexplodethis.remove(e);
+      if(player.y < 0) {
+        player.y = 0;
+      }
+      if(player.x > width) {
+        player.x = width;
+      }
+      if(player.y > height) {
+        player.y = height;
+      }
+      for (int x = 0; x < wave.fleet.size(); x++){
+        wave.fleet.get(x).render();
+      }
+      for (int i = 0; i < projectiles.size(); i++){
+        Projectile p = projectiles.get(i);
+        p.render();
+        if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
+          projectiles.remove(i);
         }
       }
-  if(specialAnim) {
-    frameRate(15);
-    frame = (frame)%10;
-    flash = special[frame];
-    image(flash, player.x, player.y);
-   
-    
-    frame++;
-    if(frame == 10) {
-      specialAnim = false;
-      frameRate(60);
-    }
-    
+      for (int x = 0; x < wave.fleet.size(); x++){
+        if (wave.fleet.get(x).x < 0){
+          player.HP = 0;
+          x = wave.fleet.size();
+        }
+      }
+      if (player.HP < 1){
+        wave = new EnemyWave();
+        projectiles = new ArrayList<Projectile>();
+        level = 0;
+        player.HP = 100;
+      }
+      
+      if(toExplode.size() >=1) {
+        for(int i = 0; i < toExplode.size(); i++) {
+          gonnaexplodethis.add(new Explosion(toExplode.peek().x, toExplode.peek().y, (int)(toExplode.peek().size/25)));
+          toExplode.removeFirst();
+        }
+      }
+      if(gonnaexplodethis.size() > 0) {
+        for(int i = 0; i < gonnaexplodethis.size(); i++) {
+          Explosion e = gonnaexplodethis.get(i);
+          e.exAnim();
+          if(e.done) {
+            gonnaexplodethis.remove(e);
+          }
+        }
+    if(specialAnim) {
+      frameRate(15);
+      frame = (frame)%10;
+      flash = special[frame];
+      image(flash, player.x, player.y);
+     
+      
+      frame++;
+      if(frame == 10) {
+        specialAnim = false;
+        frameRate(60);
+      }
+      
+      }
     }
   }
-  
+  if(startMenu) {
+    background(0);
+    fill(255);
+    rectMode(CENTER);
+    rect(width/4, height*3/4, 500, 100);
+    rect(width*3/4, height*3/4, 500, 100);
+    textAlign(CENTER);
+    text("SPACE FIGHTER", width/2, height*3/10);
+    fill(0);
+    text("Start?", width/4, height*3/4+37.5);
+    text("Exit", width*3/4, height*3/4+37.5);
+  }
 }
  
 void keyPressed() {
@@ -184,10 +203,22 @@ void keyReleased() {
 }
 
 void mousePressed(){
-  if (mouseButton == LEFT){
-    player.weapon.fire(player.x, player.y, true);
+  if(startMenu) {
+    if(mouseY <= height*3/4 +50 && mouseY >= height*3/4 - 50) {
+      if(mouseX <= width/4 + 250 && mouseX >= width/4 -250) {
+        startMenu = false;
+      }
+      if(mouseX <= width*3/4 + 250 && mouseX >= width *3/4 -250) {
+        exit();
+      }
+    } 
   }
-  if (mouseButton == RIGHT){
-    player.secondary.fire(player.x, player.y, true);
+  if(!startMenu || !restartMenu || !loadoutMenu){
+    if (mouseButton == LEFT){
+      player.weapon.fire(player.x, player.y, true);
+    }
+    if (mouseButton == RIGHT){
+      player.secondary.fire(player.x, player.y, true);
+    }
   }
 }
