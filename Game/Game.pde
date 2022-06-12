@@ -75,10 +75,11 @@ void draw(){
       text("Wave: " + (level+1), 20, 100);
       fill(128);
       rect(1100, 50, 200, 50);
+      rect(500, 0, 500, 100);
       fill(0, 0, 255);
       rect(1100, 50, 2*player.cannon.charge, 50);
       fill(255-player.HP, 255-2*(100-player.HP), 0);
-      rect(750-player.HP*2.5, 0, player.HP*5, 100);
+      rect(500, 0, player.HP*5, 100);
       
       if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
         level++;
