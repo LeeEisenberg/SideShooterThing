@@ -9,7 +9,7 @@ public class Explosion {
   }
   void exAnim() {
     if(exFrame < 12) {
-      PImage toLoad = explosions[exFrame];
+      PImage toLoad = explosions[exFrame].copy();
       toLoad.resize(size*toLoad.width, size*toLoad.height);
       image(toLoad, x, y);
       exFrame++;
