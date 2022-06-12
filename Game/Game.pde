@@ -74,12 +74,17 @@ void draw(){
       fill(255);
       text("Wave: " + (level+1), 20, 100);
       fill(128);
-      rect(1100, 50, 200, 50);
-      rect(500, 0, 500, 100);
+      rect(700, 0, 500, 50);
+      rect(700, 50, 500, 50);
       fill(0, 0, 255);
-      rect(1100, 50, 2*player.cannon.charge, 50);
+      rect(700, 50, 5*player.cannon.charge, 50);
       fill(255-player.HP, 255-2*(100-player.HP), 0);
-      rect(500, 0, player.HP*5, 100);
+      rect(700, 0, player.HP*5, 50);
+      textSize(50);
+      fill(0, 255, 0);
+      text("HP:", 500, 50);
+      fill(0, 0, 255);
+      text("METER:", 500, 100);
       
       if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
         level++;
