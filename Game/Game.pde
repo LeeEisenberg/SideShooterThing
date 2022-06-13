@@ -134,7 +134,7 @@ void draw(){
       for (int i = 0; i < projectiles.size(); i++){
         Projectile p = projectiles.get(i);
         p.render();
-        if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0 ||(p.homing && !p.friendly && p.hcounter > 120)) {
+        if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0 ||(p.homing && !p.friendly && p.hcounter > 240)) {
           projectiles.remove(i);
         }
       }
