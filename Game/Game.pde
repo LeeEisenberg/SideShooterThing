@@ -230,7 +230,6 @@ void keyPressed() {
   }
   if(key == 'f') {
     player.secondary.fire(player.x, player.y, true);
-    restartMenu = true;
   }
 } 
 

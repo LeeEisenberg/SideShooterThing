@@ -95,7 +95,11 @@ public class Projectile{
       }if(homing){
         pushMatrix();
         translate(xPos, yPos);
-        rotate(atan(dY/dX));
+        if(target.x < xPos) {
+          rotate(PI+atan(dY/dX));
+        }else {
+          rotate(atan(dY/dX));
+        }
         image(rockets[frame], 0, 0);
         popMatrix();
       }else{
