@@ -77,8 +77,8 @@ public class Projectile{
       hcounter++;
       float delX = e.x - xPos;
       float delY = e.y - yPos;
-      dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
-      dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+      dX = 5*(delX / sqrt((delX*delX)+(delY*delY)));
+      dY = 5*(delY / sqrt((delX*delX)+(delY*delY)));
     }
   }
   public void move(){
