@@ -12,15 +12,15 @@ public class EnemyWave {
   public EnemyWave(int mode) {
     fleet = new ArrayList<SpaceShip>();
     if(mode == 2) {
-      fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1700, 100, 75, 50*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1700, 300, 75, 50*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1600, 400, 75, 50*(1+(level/10.0)), 3, 0));
-      fleet.add(new SpaceShip(1600, 600, 75, 50*(1+(level/10.0)), 3, 0));
-      fleet.add(new SpaceShip(1700, 500, 75, 50*(1+(level/10.0)), 3, 0));
-      fleet.add(new SpaceShip(1700, 700, 75, 50*(1+(level/10.0)), 1, -1));
-      fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/10.0)), 1, -1));
-      fleet.add(new SpaceShip(1600, 800, 75, 50*(1+(level/10.0)), 1, -1));
+      fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1700, 100, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1700, 300, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, 400, 75, 50*(1+(level/25.0)), 3, 0));
+      fleet.add(new SpaceShip(1600, 600, 75, 50*(1+(level/25.0)), 3, 0));
+      fleet.add(new SpaceShip(1700, 500, 75, 50*(1+(level/25.0)), 3, 0));
+      fleet.add(new SpaceShip(1700, 700, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1600, 800, 75, 50*(1+(level/25.0)), 1, -1));
       flightPlan = new ArrayDeque<float[]>();
       for (int i = 0; i < 8; i++){
         flightPlan.add(new float[] {-1, 1, 30, 30});
@@ -36,9 +36,9 @@ public class EnemyWave {
       }
     }
     if(mode == 1) {
-      fleet.add(new SpaceShip(1600, 300, 150, 200*(1+(level/10.0)), 4, -1));
-      fleet.add(new SpaceShip(1600, 500, 150, 200*(1+(level/10.0)), 3, 0));
-      fleet.add(new SpaceShip(1600, 700, 150, 200*(1+(level/10.0)), 4, 1));
+      fleet.add(new SpaceShip(1600, 300, 150, 200*(1+(level/25.0)), 4, -1));
+      fleet.add(new SpaceShip(1600, 500, 150, 200*(1+(level/25.0)), 3, 0));
+      fleet.add(new SpaceShip(1600, 700, 150, 200*(1+(level/25.0)), 4, 1));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-1, 0, 200, -1});
       flightPlan.add(new float[] {-1, 2, 24, 24});
@@ -75,10 +75,10 @@ public class EnemyWave {
       flightPlan.add(new float[] {-1, 2, 0, 0, .01, .03});
     }
     if(mode == 0) {
-      fleet.add(new SpaceShip(1600, 200, 100, 100*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1600, 400, 100, 100*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1600, 600, 100, 100*(1+(level/10.0)), 1, 1));
-      fleet.add(new SpaceShip(1600, 800, 100, 100*(1+(level/10.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, 200, 100, 100*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, 400, 100, 100*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, 600, 100, 100*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, 800, 100, 100*(1+(level/25.0)), 1, 1));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-1, 0, 200, -1});
       flightPlan.add(new float[] {-1, 2, 0, 0, .01, .02, .03, .04});
@@ -98,6 +98,7 @@ public class EnemyWave {
     for (int x = fleet.size()-1; x >= 0; x--){
       fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
+        toExplode.add(fleet.get(x));
         fleet.get(x).explode();
         fleet.remove(x);
         if(player.cannon.charge != 100 && player.cannon.specialTimer == 0){
