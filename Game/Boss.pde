@@ -60,22 +60,22 @@ public class Boss {
         bullet.yPos = height/2+50;
         float delX = bullet.xPos - player.x;
         float delY = bullet.yPos - player.y;
-        bullet.dX = -10 * (delX / sqrt((delX*delX)+(delY*delY)));
-        bullet.dY = -10 * (delY / sqrt((delX*delX)+(delY*delY)));
+        bullet.dX = ( -10 -(level-6)) * (delX / sqrt((delX*delX)+(delY*delY)));
+        bullet.dY =( -10 -(level-6))* (delY / sqrt((delX*delX)+(delY*delY)));
         projectiles.add(bullet);
         Projectile bullet2 = new Projectile();
         bullet2.xPos = width-254;
         bullet2.yPos = height/2-50;
         delX = bullet.xPos - player.x;
         delY = bullet.yPos - player.y;
-        bullet2.dX = -10 * (delX / sqrt((delX*delX)+(delY*delY)));
-        bullet2.dY = -10 * (delY / sqrt((delX*delX)+(delY*delY)));
+        bullet2.dX = (-10 -(level-6))* (delX / sqrt((delX*delX)+(delY*delY)));
+        bullet2.dY = (-10-(level-6)) * (delY / sqrt((delX*delX)+(delY*delY)));
         bullet2.friendly = false;
         projectiles.add(bullet2);
       }
       if (fcounter >= 100) {
         fcounter = 0;
-        mode = (int)(random(2));
+        mode = (mode+1)%2;
       }
     }
   }
