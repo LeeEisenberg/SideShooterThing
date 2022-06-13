@@ -11,6 +11,10 @@ public class EnemyWave {
   }
   
   public EnemyWave(int mode) {
+    if(level != 0 && level % 5 == 0) {
+      boss = new Boss(1, 1000+level*100);
+      bossTime = true;
+    }
     fleet = new ArrayList<SpaceShip>();
     if(mode == 2) {
       fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/25.0)), 1, 1));
