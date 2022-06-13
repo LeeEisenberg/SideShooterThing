@@ -236,6 +236,10 @@ void keyPressed() {
   if(key == 'f') {
     player.secondary.fire(player.x, player.y, true);
   }
+  if(key == 'l') {
+    level++;
+    wave = new EnemyWave(level);
+  }
 } 
 
 void keyReleased() {
