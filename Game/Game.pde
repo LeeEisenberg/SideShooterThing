@@ -234,32 +234,43 @@ void draw(){
  
 void keyPressed() {
   player.setDir(key, true);
-  if(key == CODED && keyCode == SHIFT) {
+  if (key == CODED && keyCode == SHIFT) {
     player.dash();
   }
-  if(key == ' ' && !player.cannon.active) {
+  if (key == ' ' && !player.cannon.active) {
     player.weapon.fire(player.x, player.y, true);
   }
-  if(key == 'e') {
+  if (key == 'e') {
     player.cannon.activate((int)player.x, (int)player.y);
   }
-  if(key == 'f') {
+  if (key == 'f') {
     player.secondary.fire(player.x, player.y, true);
   }
-  if(key == '1') {
+  if (key == '1') {
     player.HP = 100;
   }
-  if(key == '2') {
+  if (key == '2') {
     player.HP = 0;
   }
-  if(key == '3') {
+  if (key == '3') {
     player.cannon.charge = 100;
   }
-  if(key == '4'){
+  if (key == '4'){
     level++;
     wave = new EnemyWave();
   }
-} 
+  if (key == '5'){
+    player.power1Time = Integer.MAX_VALUE;
+  }
+  if (key == '6'){
+    player.power3Time = Integer.MAX_VALUE;
+  }
+  if (key == '7'){
+    player.power1Time = 0;
+    player.power3Time = 0;
+  }
+}
+
 
 void keyReleased() {
   player.setDir(key, false);
