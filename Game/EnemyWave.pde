@@ -4,12 +4,17 @@ import java.util.Arrays;
 public class EnemyWave {
   public ArrayList<SpaceShip> fleet;
   private ArrayDeque<float[]> flightPlan;
-  
+  private Boss boss;
+  public boolean bossTime;
   public EnemyWave(){
     this((int) random(4));
   }
   
   public EnemyWave(int mode) {
+    if(level != 0 && level % 5 == 0) {
+      boss = new Boss(0, 1000+level*100);
+      bossTime = true;
+    }
     fleet = new ArrayList<SpaceShip>();
     if(mode == 2) {
       fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/10.0)), 1, 1));
@@ -65,29 +70,37 @@ public class EnemyWave {
   }
     
   public void move(){
-    float[] temp;
-    temp = flightPlan.poll();
-    for (int x = fleet.size()-1; x >= 0; x--){
-      fleet.get(x).isHit();
-      if (fleet.get(x).HP <= 0){
-        fleet.get(x).explode();
-        fleet.remove(x);
-        if(player.cannon.charge != 100 && player.cannon.specialTimer == 0){
-          player.cannon.charge += 10;
-        }
-      } else{
-        fleet.get(x).move(temp[0],temp[1]);
-        if (Arrays.binarySearch(temp, (x+1) / 100.0) >= 0){
-          fleet.get(x).fire();
+    if(bossTime) {
+      boss.render();
+      rectMode(CENTER);
+      fill(0, 0, 255);
+      rect(width/2, 900, 500*boss.HP/boss.mHP, 50);
+    }else {
+      float[] temp;
+      temp = flightPlan.poll();
+      for (int x = fleet.size()-1; x >= 0; x--){
+        fleet.get(x).isHit();
+        if (fleet.get(x).HP <= 0){
+          toExplode.add(fleet.get(x));
+          fleet.get(x).explode();
+          fleet.remove(x);
+          if(player.cannon.charge != 100 && player.cannon.specialTimer == 0){
+            player.cannon.charge += 10;
+          }
+        } else{
+          fleet.get(x).move(temp[0],temp[1]);
+          if (Arrays.binarySearch(temp, (x+1) / 100.0) >= 0){
+            fleet.get(x).fire();
+          }
         }
       }
-    }
-    if (temp[2] > 0){
-      temp[2]--;
-      flightPlan.addFirst(temp);
-    } else if (temp[3] >= 0){
-      temp[2] = temp[3];
-      flightPlan.add(temp);
+      if (temp[2] > 0){
+        temp[2]--;
+        flightPlan.addFirst(temp);
+      } else if (temp[3] >= 0){
+        temp[2] = temp[3];
+        flightPlan.add(temp);
+      }
     }
   }
 }

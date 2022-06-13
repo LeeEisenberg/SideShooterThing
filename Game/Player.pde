@@ -18,7 +18,12 @@ public class Player extends SpaceShip {
     left = false;
     right = false;
     sprite = loadImage("sprites/player.png");
-    secondary = new Weapon(6);
+    if(loadout == 0) {
+      secondary = new Weapon(5);
+    }
+    if(loadout == 1) {
+      secondary = new Weapon(6);
+    }
     cannon = new SpecialWeapon(loadout);
   }
  
@@ -26,6 +31,7 @@ public class Player extends SpaceShip {
     move(dX, dY);
   }
   void render() {
+    tint(255,255);
     imageMode(CENTER);
     if(power1Time > 0) {
       tint(100, 100, 255);
@@ -79,15 +85,7 @@ public class Player extends SpaceShip {
       case 'd':
         right = bool;
         break;
-      case ' ':
-        weapon.fire(x, y, true);
-        break;
-      case 'e':
-        cannon.activate((int)x, (int)y);
-        break;
-      case 'f':
-        secondary.fire(x, y, true);
-        break;
+      
       case 'l':
         if (bool){
           level++;

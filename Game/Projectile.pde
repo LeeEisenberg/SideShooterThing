@@ -10,10 +10,10 @@ public class Projectile{
   public boolean friendly;
   public int frame;
   public boolean pierce;
-  private PImage temp;
   public boolean homing;
   public boolean homed;
   public SpaceShip target;
+  
   
   public Projectile(){
     size = 10;
@@ -95,7 +95,11 @@ public class Projectile{
       }if(homing){
         pushMatrix();
         translate(xPos, yPos);
-        rotate(atan(dY/dX));
+        if(target.x < xPos) {
+          rotate(PI+atan(dY/dX));
+        }else {
+          rotate(atan(dY/dX));
+        }
         image(rockets[frame], 0, 0);
         popMatrix();
       }else{
