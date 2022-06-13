@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import processing.sound.*;
 
-int score = 0;
 static int hiScore;
 static Player player;
 ArrayList<Projectile> projectiles;
@@ -75,11 +74,11 @@ void setup(){
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
   specialAnim = false;
-  cannonyell = new SoundFile(this, "sounds/protoncannon.mp3");
-  sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
+  cannonyell = new SoundFile(this, "sounds/protoncannon.wav");
+  sundaybest = new SoundFile(this, "sounds/heresmysundaybest.wav");
   pew = new SoundFile(this, "sounds/lasershot.wav");
   pew.amp(.3);
-  pierce = new SoundFile(this, "sounds/pierceshot.mp3");
+  pierce = new SoundFile(this, "sounds/pierceshot.wav");
   pierce.amp(.2);
   explode = new SoundFile(this, "sounds/explode.wav");
   explode.amp(.2);
@@ -293,6 +292,7 @@ void mousePressed(){
   if(!startMenu || !restartMenu || !loadoutMenu){
     if (mouseButton == LEFT){
       player.weapon.fire(player.x, player.y, true);
+      pew.play();
     }
     if (mouseButton == RIGHT){
       player.secondary.fire(player.x, player.y, true);

@@ -1,4 +1,4 @@
-gitimport java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.ArrayDeque;
 import java.util.Arrays;
 public class EnemyWave {
@@ -102,6 +102,9 @@ public class EnemyWave {
     }else {
       float[] temp;
       temp = flightPlan.poll();
+      if (temp.length > 4){
+        pew.play();
+      }
       for (int x = fleet.size()-1; x >= 0; x--){
         fleet.get(x).isHit();
         if (fleet.get(x).HP <= 0){
