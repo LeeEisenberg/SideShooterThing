@@ -52,7 +52,7 @@ public class SpaceShip {
      sprite.resize((int)(224 * size/150), (int)(148 * size/150));
      image(sprite, x, y);
      isHit();
-     fill(255-HP, 255-2*(100-HP), 0);
+     fill(255-255*HP/mHP, 255-200*(1-HP/mHP), 0);
      rectMode(CENTER);
      rect(x, y+size/2+50, 100*HP/mHP, 20);
    }
