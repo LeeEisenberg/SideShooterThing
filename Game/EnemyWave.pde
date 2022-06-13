@@ -7,7 +7,7 @@ public class EnemyWave {
   private Boss boss;
   public boolean bossTime;
   public EnemyWave(){
-    //this((int) random(4));
+    //this((int) random(8));
     this(3);
   }
   
@@ -17,16 +17,99 @@ public class EnemyWave {
       bossTime = true;
     }
     fleet = new ArrayList<SpaceShip>();
-    if(mode == 3) {
-      fleet.add(new SpaceShip(1800, 200, 75, 10*(1+(level/25.0)), 3, -1));
-      fleet.add(new SpaceShip(1800, 400, 75, 10*(1+(level/25.0)), 3, -1));
-      fleet.add(new SpaceShip(1800, 600, 75, 10*(1+(level/25.0)), 3, -1));
-      fleet.add(new SpaceShip(1800, 800, 75, 10*(1+(level/25.0)), 3, -1));
-      fleet.add(new SpaceShip(1600, 100, 250, 400*(1+(level/25.0)), 0, 1));
-      fleet.add(new SpaceShip(1600, 500, 250, 400*(1+(level/25.0)), 0, 1));
-      fleet.add(new SpaceShip(1600, 900, 250, 400*(1+(level/25.0)), 0, 1));
+    if(mode == 7) {
+      fleet.add(new SpaceShip(1400, -500, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1300, -400, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1400, -300, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1500, -400, 75, 50*(1+(level/25.0)), 3, 1));
+      fleet.add(new SpaceShip(1400, 1300, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1300, 1400, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1400, 1500, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1500, 1400, 75, 50*(1+(level/25.0)), 3, -1));
       flightPlan = new ArrayDeque<float[]>();
-      flightPlan.add(new float[] {-.5, 0, 200, -1});
+      flightPlan.add(new float[] {-.75, 0, 100, -1});
+      for (int i = 0; i < 6; i++){
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .01, .02, .03, .04});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .05, .06, .07, .08});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+      }
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .04, .05, .06});
+      flightPlan.add(new float[] {-.75, 0, 49, 49});
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .01, .02, .03, .07, .08, .09});
+      flightPlan.add(new float[] {-.75, 0, 49, 49});
+    }
+    if(mode == 6) {
+      fleet.add(new SpaceShip(1400, -500, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1400, -400, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1400, -300, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1700, 400, 75, 50*(1+(level/25.0)), 2, 0));
+      fleet.add(new SpaceShip(1600, 500, 75, 50*(1+(level/25.0)), 2, 0));
+      fleet.add(new SpaceShip(1700, 600, 75, 50*(1+(level/25.0)), 2, 0));
+      fleet.add(new SpaceShip(1400, 1300, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1400, 1400, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1400, 1500, 75, 50*(1+(level/25.0)), 1, -1));
+      flightPlan = new ArrayDeque<float[]>();
+      flightPlan.add(new float[] {-.75, 0, 200, -1});
+      for (int i = 0; i < 3; i++){
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .04, .05, .06});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .01, .02, .03, .07, .08, .09});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+      }
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .04, .05, .06});
+      flightPlan.add(new float[] {-.75, 0, 49, 49});
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .01, .02, .03, .07, .08, .09});
+      flightPlan.add(new float[] {-.75, 0, 49, 49});
+    }
+    if(mode == 5) {
+      fleet.add(new SpaceShip(1700, 200, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1600, 100, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, 0, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, 1200, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1600, 1100, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1700, 1000, 75, 50*(1+(level/25.0)), 1, -1));
+      fleet.add(new SpaceShip(1700, 2200, 75, 50*(1+(level/25.0)), 1, -2));
+      fleet.add(new SpaceShip(1600, 2100, 75, 50*(1+(level/25.0)), 1, -2));
+      fleet.add(new SpaceShip(1700, 2000, 75, 50*(1+(level/25.0)), 1, -2));
+      flightPlan = new ArrayDeque<float[]>();
+      flightPlan.add(new float[] {-.75, 0, 500, -1});
+      for (int i = 0; i < 6; i++){
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .01, .02, .03, .04, .05, .06, .07, .08, .09});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+      }
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .01, .02, .03, .04, .05, .06, .07, .08, .09});
+        flightPlan.add(new float[] {-.75, 0, 49, 49});
+    }
+    if(mode == 4) {
+      fleet.add(new SpaceShip(1700, 700, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1600, 800, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, 900, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, -200, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1600, -100, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1700, 0, 75, 50*(1+(level/25.0)), 1, 1));
+      fleet.add(new SpaceShip(1700, -1200, 75, 50*(1+(level/25.0)), 1, 2));
+      fleet.add(new SpaceShip(1600, -1100, 75, 50*(1+(level/25.0)), 1, 2));
+      fleet.add(new SpaceShip(1700, -1000, 75, 50*(1+(level/25.0)), 1, 2));
+      flightPlan = new ArrayDeque<float[]>();
+      flightPlan.add(new float[] {-.75, 0, 500, -1});
+      for (int i = 0; i < 6; i++){
+        flightPlan.add(new float[] {-.75, 2, 0, -1, .01, .02, .03, .04, .05, .06, .07, .08, .09});
+        flightPlan.add(new float[] {-.75, 2, 49, -1});
+      }
+      flightPlan.add(new float[] {-.75, 0, 0, 0, .01, .02, .03, .04, .05, .06, .07, .08, .09});
+        flightPlan.add(new float[] {-.75, 0, 49, 49});
+    }
+    if(mode == 3) {
+      fleet.add(new SpaceShip(1900, 200, 75, 10*(1+(level/25.0)), 3, -1));
+      fleet.add(new SpaceShip(1900, 400, 75, 10*(1+(level/25.0)), 3, -1));
+      fleet.add(new SpaceShip(1900, 600, 75, 10*(1+(level/25.0)), 3, -1));
+      fleet.add(new SpaceShip(1900, 800, 75, 10*(1+(level/25.0)), 3, -1));
+      fleet.add(new SpaceShip(1700, 100, 250, 400*(1+(level/25.0)), 0, 1));
+      fleet.add(new SpaceShip(1700, 500, 250, 400*(1+(level/25.0)), 0, 1));
+      fleet.add(new SpaceShip(1700, 900, 250, 400*(1+(level/25.0)), 0, 1));
+      flightPlan = new ArrayDeque<float[]>();
+      flightPlan.add(new float[] {-1, 0, 300, -1});
       flightPlan.add(new float[] {-.5, 2, 0, 0, .01, .02, .03, .04});
       flightPlan.add(new float[] {-.5, 2, 49, 49});
       flightPlan.add(new float[] {-.5, -2, 0, 0, .01, .02, .03, .04});

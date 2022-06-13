@@ -107,7 +107,7 @@ void draw(){
       
       if (wave.fleet.size() < 1 || wave.bossTime && wave.boss.HP <= 0){//creates new wave if previous wave is ded
         level++;
-        wave = new EnemyWave((int) random(3));//check this later
+        wave = new EnemyWave();
       }
       if(wave.bossTime){wave.boss.render();}
       if(!specialAnim){
