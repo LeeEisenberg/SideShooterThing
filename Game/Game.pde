@@ -96,7 +96,7 @@ void draw(){
       fill(0, 0, 255);
       text("METER:", 500, 100);
       
-      if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
+      if (wave.fleet.size() < 1 || wave.bossTime && wave.boss.HP <= 0){//creates new wave if previous wave is ded
         level++;
         wave = new EnemyWave((int) random(3));//check this later
       }
@@ -123,8 +123,10 @@ void draw(){
       if(player.y > height) {
         player.y = height;
       }
-      for (int x = 0; x < wave.fleet.size(); x++){
-        wave.fleet.get(x).render();
+      if(!wave.bossTime) {
+        for (int x = 0; x < wave.fleet.size(); x++){
+          wave.fleet.get(x).render();
+        }
       }
       for (int i = 0; i < projectiles.size(); i++){
         Projectile p = projectiles.get(i);
