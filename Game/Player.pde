@@ -85,7 +85,7 @@ public class Player extends SpaceShip {
       case 'd':
         right = bool;
         break;
-     }
+    }
   }
   void isHit() {
      for(int i = projectiles.size()-1; i >= 0; i--) {

@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import processing.sound.*;
 
-int score = 0;
 static int hiScore;
 static Player player;
 ArrayList<Projectile> projectiles;
@@ -21,8 +20,11 @@ PImage[] rockets;
 PImage[] explosions;
 PImage mothership;
 PImage secondboss;
-SoundFile cannonyell;
-SoundFile sundaybest;
+SoundFile superSound;
+SoundFile pew;
+SoundFile pierce;
+SoundFile explode;
+SoundFile missile;
 boolean specialAnim;
 int frame;
 boolean startMenu;
@@ -35,7 +37,6 @@ void setup(){
   size(1500,1000);
   textSize(100);
   startMenu = true;
-  frame = 0;
   player = new Player(1);
   toExplode = new ArrayDeque();
   gonnaexplodethis = new ArrayList<Explosion>();
@@ -75,12 +76,16 @@ void setup(){
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
   specialAnim = false;
-  cannonyell = new SoundFile(this, "sounds/protoncannon.mp3");
-  sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
+  pew = new SoundFile(this, "sounds/lasershot.wav");
+  pew.amp(.3);
+  pierce = new SoundFile(this, "sounds/pierceshot.wav");
+  pierce.amp(.2);
+  explode = new SoundFile(this, "sounds/explode.wav");
+  explode.amp(.2);
+  missile = new SoundFile(this, "sounds/missile.wav");
 }
 void draw(){
     if(!startMenu && !restartMenu && !loadoutMenu){
-      player.cannon.charge = 100;
       tint(255,255);
       rectMode(CORNER);
       textAlign(LEFT);
@@ -111,9 +116,9 @@ void draw(){
         }
         wave.move();
         if(player.cannon.specialTimer > 0) {
-        player.cannon.specialTimer--;
-      }
-      player.cannon.fire(player.x, player.y);
+          player.cannon.specialTimer--;
+        }
+        player.cannon.fire(player.x, player.y);
       }
       player.render();
       if(player.x < 0) {
@@ -164,17 +169,18 @@ void draw(){
           }
         }
       }
-    if(specialAnim) {
-      frameRate(15);
-      frame = (frame)%10;
-      flash = special[frame];
-      image(flash, player.x, player.y);
-      frame++;
-      if(frame >= 10) {
-        specialAnim = false;
-        frameRate(60);
-      }
-      
+      if(specialAnim) {
+        frameRate(15);
+        frame = (frame)%10;
+        flash = special[frame];
+        image(flash, player.x, player.y);
+       
+        
+        frame++;
+        if(frame == 10) {
+          specialAnim = false;
+          frameRate(60);
+        }
       }
     }
   if(startMenu) {
@@ -240,6 +246,12 @@ void keyPressed() {
     level++;
     wave = new EnemyWave(level);
   }
+  if(key == '1') {
+    player.HP = 100;
+  }
+  if(key == '2') {
+    player.cannon.charge = 100;
+  }
 } 
 
 void keyReleased() {
@@ -263,10 +275,12 @@ void mousePressed(){
       if(mouseX <= width/4 + 250 && mouseX >= width/4 - 250) {
         player = new Player(0);
         loadoutMenu = false;
+        superSound = new SoundFile(this, "sounds/protoncannon.wav");
       }
       if(mouseX <= width*3/4 + 250 && mouseX >= width*3/4 - 250) {
         player = new Player(1);
         loadoutMenu = false;
+        superSound = new SoundFile(this, "sounds/heresmysundaybest.wav");
       }
     }
   }
@@ -289,6 +303,7 @@ void mousePressed(){
   if(!startMenu || !restartMenu || !loadoutMenu){
     if (mouseButton == LEFT){
       player.weapon.fire(player.x, player.y, true);
+      pew.play();
     }
     if (mouseButton == RIGHT){
       player.secondary.fire(player.x, player.y, true);

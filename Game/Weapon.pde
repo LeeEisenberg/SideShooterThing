@@ -69,7 +69,7 @@ public class Weapon {
         bullet.friendly = false;
       }
       projectiles.add(bullet);
-    }else if(pattern == 5) {
+    }else if(pattern == 5) {//pierce
       if(player.cannon.charge >= 5) {
         Projectile bullet = new Projectile();
         bullet.pierce = true;
@@ -79,16 +79,18 @@ public class Weapon {
         bullet.dX *=2;
         projectiles.add(bullet);
         player.cannon.charge-=5;
+        pierce.play();
       }
-    }else if(pattern == 6) {
+    }else if(pattern == 6) {//rocket
       if(player.cannon.charge >=7) {
-      Projectile rocket = new Projectile();
-      rocket.homing = true;
-      rocket.setxPos(x);
-      rocket.setyPos(y);
-      rocket.damage = 20;
-      projectiles.add(rocket);
-      player.cannon.charge -= 7;
+        Projectile rocket = new Projectile();
+        rocket.homing = true;
+        rocket.setxPos(x);
+        rocket.setyPos(y);
+        rocket.damage = 20;
+        projectiles.add(rocket);
+        player.cannon.charge -= 7;
+        missile.play();
       }
     }
   }
