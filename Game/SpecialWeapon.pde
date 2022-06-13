@@ -29,8 +29,8 @@ public class SpecialWeapon {
         image(cBases[frame], x+100, y);
         if(!wave.bossTime){
           for(int i = 0; i < wave.fleet.size(); i++) {
-            if(wave.fleet.get(i).y >= y-100 && wave.fleet.get(i).y <= y+100) {
-              wave.fleet.get(i).HP -= 5;
+            if(wave.fleet.get(i).y >= y-100 && wave.fleet.get(i).y <= y+100 && wave.fleet.get(i).x >= x) {
+              wave.fleet.get(i).HP -= 7;
             }
           }
         }

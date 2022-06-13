@@ -107,7 +107,7 @@ void draw(){
       
       if (wave.fleet.size() < 1 || wave.bossTime && wave.boss.HP <= 0){//creates new wave if previous wave is ded
         level++;
-        wave = new EnemyWave((int) random(3));//check this later
+        wave = new EnemyWave();
       }
       if(wave.bossTime){wave.boss.render();}
       if(!specialAnim){
@@ -234,32 +234,43 @@ void draw(){
  
 void keyPressed() {
   player.setDir(key, true);
-  if(key == CODED && keyCode == SHIFT) {
+  if (key == CODED && keyCode == SHIFT) {
     player.dash();
   }
-  if(key == ' ' && !player.cannon.active) {
+  if (key == ' ' && !player.cannon.active) {
     player.weapon.fire(player.x, player.y, true);
   }
-  if(key == 'e') {
+  if (key == 'e') {
     player.cannon.activate((int)player.x, (int)player.y);
   }
-  if(key == 'f') {
+  if (key == 'f') {
     player.secondary.fire(player.x, player.y, true);
   }
-  if(key == '1') {
+  if (key == '1') {
     player.HP = 100;
   }
-  if(key == '2') {
+  if (key == '2') {
     player.HP = 0;
   }
-  if(key == '3') {
+  if (key == '3') {
     player.cannon.charge = 100;
   }
-  if(key == '4'){
+  if (key == '4'){
     level++;
     wave = new EnemyWave();
   }
-} 
+  if (key == '5'){
+    player.power1Time = Integer.MAX_VALUE;
+  }
+  if (key == '6'){
+    player.power3Time = Integer.MAX_VALUE;
+  }
+  if (key == '7'){
+    player.power1Time = 0;
+    player.power3Time = 0;
+  }
+}
+
 
 void keyReleased() {
   player.setDir(key, false);
@@ -299,9 +310,11 @@ void mousePressed(){
         projectiles = new ArrayList<Projectile>();
         level = 0;
         player.HP = 100;
+        player.cannon.charge = 0;
         player.x = 0;
         player.y = height/2;
         restartMenu = false;
+        wave.bossTime = false;
       }
       if(mouseX <= width*3/4 + 150 && mouseX >= width*3/4 -150) {
         exit();
