@@ -311,9 +311,11 @@ void mousePressed(){
         projectiles = new ArrayList<Projectile>();
         level = 0;
         player.HP = 100;
+        player.cannon.charge = 0;
         player.x = 0;
         player.y = height/2;
         restartMenu = false;
+        wave.bossTime = false;
       }
       if(mouseX <= width*3/4 + 150 && mouseX >= width*3/4 -150) {
         exit();
