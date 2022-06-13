@@ -14,6 +14,7 @@ public class Projectile{
   public boolean homed;
   public int hcounter;
   public SpaceShip target;
+  public Boss targetB;
   
   
   public Projectile(){
@@ -66,11 +67,19 @@ public class Projectile{
         target = wave.fleet.get((int)random(wave.fleet.size()));
         homed = true;
       }
-      SpaceShip e = target;
-      float delX = e.x - xPos;
-      float delY = e.y - yPos;
-      dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
-      dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+      if(!wave.bossTime){
+        SpaceShip e = target;
+        float delX = e.x - xPos;
+        float delY = e.y - yPos;
+        dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
+        dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+      }else {
+        Boss e = wave.boss;
+        float delX = e.x - xPos;
+        float delY = e.y - yPos;
+        dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
+        dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+      }
     }
     if(!friendly) {
       SpaceShip e = player;
@@ -113,10 +122,21 @@ public class Projectile{
         scale(2);
         image(piercing[0], 0, 0);
         popMatrix();
-      }if(homing){
+      }if(homing && !wave.bossTime){
         pushMatrix();
         translate(xPos, yPos);
         if(target != null && target.x < xPos) {
+          rotate(PI+atan(dY/dX));
+        }else {
+          rotate(atan(dY/dX));
+        }
+        image(rockets[frame], 0, 0);
+        popMatrix();
+        
+      }if(homing && wave.bossTime) {
+        pushMatrix();
+        translate(xPos, yPos);
+        if(wave.boss.x < xPos) {
           rotate(PI+atan(dY/dX));
         }else {
           rotate(atan(dY/dX));
