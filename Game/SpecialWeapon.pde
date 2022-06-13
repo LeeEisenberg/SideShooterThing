@@ -27,9 +27,21 @@ public class SpecialWeapon {
           image(cannonSprites[frame], x+(115)+85*(i+1), y);
         }
         image(cBases[frame], x+100, y);
-        for(int i = 0; i < wave.fleet.size(); i++) {
-          if(wave.fleet.get(i).y >= y-100 && wave.fleet.get(i).y <= y+100) {
-            wave.fleet.get(i).HP -= 5;
+        if(!wave.bossTime){
+          for(int i = 0; i < wave.fleet.size(); i++) {
+            if(wave.fleet.get(i).y >= y-100 && wave.fleet.get(i).y <= y+100) {
+              wave.fleet.get(i).HP -= 5;
+            }
+          }
+        }
+        if(wave.bossTime) {
+          if(wave.boss.ver == 0) {
+            wave.boss.HP -= 5;
+          }
+          if(wave.boss.ver == 1) {
+            if(wave.boss.y >= y-100 && wave.boss.y <= y+100) {
+              wave.boss.HP -= 5;
+            }
           }
         }
       }

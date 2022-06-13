@@ -110,6 +110,7 @@ void draw(){
         level++;
         wave = new EnemyWave((int) random(3));//check this later
       }
+      if(wave.bossTime){wave.boss.render();}
       if(!specialAnim){
         for (int x = 0; x < projectiles.size(); x++){
           projectiles.get(x).move();
