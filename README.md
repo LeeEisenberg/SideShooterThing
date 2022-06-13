@@ -27,7 +27,7 @@ Each level consists of a wave of enemies that slowly move towards you while firi
 
 ### Powerups
 Every time an enemy dies, they have a chance to drop one of three powerups:<br />
-The cyan box gives the player a temporary shield, which prevents all damage. It is shown by the player being tinted blue.<br />
+The cyan box gives the player a temporary shield, which prevents all damage. It is shown by the player being tinted blue. This powerup is also given breifly to the player when they dash or use their super to avoid taking unfair damage<br />
 The green box instantly restores 10 of the player's missing hitpoints.<br />
 The purple box increases the range of the player's dash, and also removes its cooldown.
 
