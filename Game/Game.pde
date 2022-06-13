@@ -20,6 +20,7 @@ PImage light;
 PImage[] rockets;
 PImage[] explosions;
 PImage mothership;
+PImage secondboss;
 SoundFile cannonyell;
 SoundFile sundaybest;
 boolean specialAnim;
@@ -46,6 +47,8 @@ void setup(){
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
   }
+  secondboss = loadImage("sprites/type2.png");
+  secondboss.resize(secondboss.width*5, secondboss.height*5);
   powerup = loadImage("sprites/powerup.png");
   special = new PImage[75];
   for(int i = 0; i<=9; i++) {
@@ -131,7 +134,7 @@ void draw(){
       for (int i = 0; i < projectiles.size(); i++){
         Projectile p = projectiles.get(i);
         p.render();
-        if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0) {
+        if(p.xPos >= width || p.yPos >= height || p.xPos <= 0 || p.yPos <= 0 ||(p.homing && !p.friendly && p.hcounter > 120)) {
           projectiles.remove(i);
         }
       }
