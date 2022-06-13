@@ -7,8 +7,7 @@ public class EnemyWave {
   private Boss boss;
   public boolean bossTime;
   public EnemyWave(){
-    //this((int) random(8));
-    this(3);
+    this((int) random(8));
   }
   
   public EnemyWave(int mode) {
