@@ -95,9 +95,13 @@ public class EnemyWave {
   public void move(){
     float[] temp;
     temp = flightPlan.poll();
+    if (temp.length > 4){
+      pew.play();
+    }
     for (int x = fleet.size()-1; x >= 0; x--){
       fleet.get(x).isHit();
       if (fleet.get(x).HP <= 0){
+        explode.play();
         toExplode.add(fleet.get(x));
         fleet.get(x).explode();
         fleet.remove(x);

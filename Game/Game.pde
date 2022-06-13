@@ -21,6 +21,10 @@ PImage[] rockets;
 PImage[] explosions;
 SoundFile cannonyell;
 SoundFile sundaybest;
+SoundFile pew;
+SoundFile pierce;
+SoundFile explode;
+SoundFile missile;
 boolean specialAnim;
 int frame;
 boolean startMenu;
@@ -64,6 +68,14 @@ void setup(){
   specialAnim = false;
   cannonyell = new SoundFile(this, "sounds/protoncannon.mp3");
   sundaybest = new SoundFile(this, "sounds/heresmysundaybest.mp3");
+  pew = new SoundFile(this, "sounds/lasershot.wav");
+  pew.amp(.3);
+  pierce = new SoundFile(this, "sounds/pierceshot.mp3");
+  pierce.amp(.2);
+  explode = new SoundFile(this, "sounds/explode.wav");
+  explode.amp(.2);
+  missile = new SoundFile(this, "sounds/missile.wav");
+  //missile.amp(.2);
 }
 void draw(){
     if(!startMenu && !restartMenu && !loadoutMenu){
@@ -271,6 +283,7 @@ void mousePressed(){
   if(!startMenu || !restartMenu || !loadoutMenu){
     if (mouseButton == LEFT){
       player.weapon.fire(player.x, player.y, true);
+      pew.play();
     }
     if (mouseButton == RIGHT){
       player.secondary.fire(player.x, player.y, true);
