@@ -19,6 +19,7 @@ PImage[] lightning;
 PImage light;
 PImage[] rockets;
 PImage[] explosions;
+PImage mothership;
 SoundFile cannonyell;
 SoundFile sundaybest;
 boolean specialAnim;
@@ -26,6 +27,7 @@ int frame;
 boolean startMenu;
 boolean restartMenu;
 boolean loadoutMenu;
+
 
 void setup(){
   frameRate(60);
@@ -38,6 +40,8 @@ void setup(){
   wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
+  mothership = loadImage("sprites/mother.png");
+  
   sprites = new PImage[4];
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
@@ -59,6 +63,11 @@ void setup(){
   for(int i = 0; i < 12; i++) {
     explosions[i] = loadImage("sprites/explode"+(i+1)+".png");
   }
+  lightning = new PImage[10];
+  for(int i = 0; i < 10; i++) {
+    lightning[i] = loadImage("sprites/light"+(i+1)+".png");
+    lightning[i].resize(lightning[i].width*5, lightning[i].height*5);
+  }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
   specialAnim = false;
@@ -67,6 +76,7 @@ void setup(){
 }
 void draw(){
     if(!startMenu && !restartMenu && !loadoutMenu){
+      tint(255,255);
       rectMode(CORNER);
       textAlign(LEFT);
       image(background, 750, 500);
@@ -86,7 +96,7 @@ void draw(){
       fill(0, 0, 255);
       text("METER:", 500, 100);
       
-      if (wave.fleet.size() < 1){//creates new wave if previous wave is ded
+      if (wave.fleet.size() < 1 || wave.bossTime && wave.boss.HP <= 0){//creates new wave if previous wave is ded
         level++;
         wave = new EnemyWave((int) random(3));//check this later
       }
@@ -113,8 +123,10 @@ void draw(){
       if(player.y > height) {
         player.y = height;
       }
-      for (int x = 0; x < wave.fleet.size(); x++){
-        wave.fleet.get(x).render();
+      if(!wave.bossTime) {
+        for (int x = 0; x < wave.fleet.size(); x++){
+          wave.fleet.get(x).render();
+        }
       }
       for (int i = 0; i < projectiles.size(); i++){
         Projectile p = projectiles.get(i);
@@ -220,7 +232,6 @@ void keyPressed() {
   }
   if(key == 'f') {
     player.secondary.fire(player.x, player.y, true);
-    restartMenu = true;
   }
 } 
 
