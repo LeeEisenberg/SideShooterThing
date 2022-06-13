@@ -1,6 +1,7 @@
 public class Boss {
   public int ver;
   public int mode;
+  boolean ready;
   int fcounter;
   int HP, mHP;
   int x, y;
@@ -14,7 +15,7 @@ public class Boss {
   }
   void isHit() {
     for(int i = 0; i < projectiles.size(); i++) {
-      if(projectiles.get(i).xPos >= width-254 && projectiles.get(i).friendly) {
+      if(ready && projectiles.get(i).xPos >= width-254 && projectiles.get(i).friendly) {
         HP -= projectiles.remove(i).damage;
       }
     }
@@ -23,6 +24,7 @@ public class Boss {
     if(x >= width) {
       x-=5;
     }else{
+      ready = true;
       fcounter++;
       if(fcounter < 90) {
         rectMode(CORNER);
@@ -58,16 +60,16 @@ public class Boss {
         bullet.yPos = height/2+50;
         float delX = bullet.xPos - player.x;
         float delY = bullet.yPos - player.y;
-        bullet.dX = 10 * (delX / sqrt((delX*delX)+(delY*delY)));
-        bullet.dY = 10 * (delY / sqrt((delX*delX)+(delY*delY)));
+        bullet.dX = -10 * (delX / sqrt((delX*delX)+(delY*delY)));
+        bullet.dY = -10 * (delY / sqrt((delX*delX)+(delY*delY)));
         projectiles.add(bullet);
         Projectile bullet2 = new Projectile();
         bullet2.xPos = width-254;
         bullet2.yPos = height/2-50;
         delX = bullet.xPos - player.x;
         delY = bullet.yPos - player.y;
-        bullet2.dX = -6 * (delX / sqrt((delX*delX)+(delY*delY)));
-        bullet2.dY = -6 * (delY / sqrt((delX*delX)+(delY*delY)));
+        bullet2.dX = -10 * (delX / sqrt((delX*delX)+(delY*delY)));
+        bullet2.dY = -10 * (delY / sqrt((delX*delX)+(delY*delY)));
         bullet2.friendly = false;
         projectiles.add(bullet2);
       }
