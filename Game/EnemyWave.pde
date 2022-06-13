@@ -7,7 +7,8 @@ public class EnemyWave {
   private Boss boss;
   public boolean bossTime;
   public EnemyWave(){
-    this((int) random(8));
+    //this((int) random(8));
+    this(4);
   }
   
   public EnemyWave(int mode) {
@@ -62,15 +63,15 @@ public class EnemyWave {
       flightPlan.add(new float[] {-.75, 0, 49, 49});
     }
     if(mode == 5) {
-      fleet.add(new SpaceShip(1700, 200, 75, 50*(1+(level/25.0)), 1, 0));
-      fleet.add(new SpaceShip(1600, 100, 75, 50*(1+(level/25.0)), 1, 0));
-      fleet.add(new SpaceShip(1700, 0, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, 250, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1600, 150, 75, 50*(1+(level/25.0)), 1, 0));
+      fleet.add(new SpaceShip(1700, 50, 75, 50*(1+(level/25.0)), 1, 0));
       fleet.add(new SpaceShip(1700, 1200, 75, 50*(1+(level/25.0)), 1, -1));
       fleet.add(new SpaceShip(1600, 1100, 75, 50*(1+(level/25.0)), 1, -1));
       fleet.add(new SpaceShip(1700, 1000, 75, 50*(1+(level/25.0)), 1, -1));
-      fleet.add(new SpaceShip(1700, 2200, 75, 50*(1+(level/25.0)), 1, -2));
-      fleet.add(new SpaceShip(1600, 2100, 75, 50*(1+(level/25.0)), 1, -2));
-      fleet.add(new SpaceShip(1700, 2000, 75, 50*(1+(level/25.0)), 1, -2));
+      fleet.add(new SpaceShip(1700, 2150, 75, 50*(1+(level/25.0)), 1, -2));
+      fleet.add(new SpaceShip(1600, 2050, 75, 50*(1+(level/25.0)), 1, -2));
+      fleet.add(new SpaceShip(1700, 1950, 75, 50*(1+(level/25.0)), 1, -2));
       flightPlan = new ArrayDeque<float[]>();
       flightPlan.add(new float[] {-.75, 0, 500, -1});
       for (int i = 0; i < 6; i++){
