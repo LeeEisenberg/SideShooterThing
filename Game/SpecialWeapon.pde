@@ -46,21 +46,13 @@ public class SpecialWeapon {
       active = false;
     }
   }
-  void yell() {
-     if(pattern == 0) {
-       cannonyell.play();
-     }
-     if(pattern == 1) {
-       sundaybest.play();
-     }
-   }
   void activate(float x, float y) {
     if(specialTimer == 0 && charge >= 100) {
+      superSound.play();
       Game.player.power1Time += 120; //invincibility frames lol
       specialTimer = 120;
       charge = 0;
       specialAnim = true;
-      yell();
       active = true;
     }
   }
