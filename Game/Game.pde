@@ -15,7 +15,6 @@ PImage background;
 PImage special[];
 PImage flash;
 PImage[] lightning;
-PImage light;
 PImage[] rockets;
 PImage[] explosions;
 PImage mothership;
