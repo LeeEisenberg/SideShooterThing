@@ -3,6 +3,8 @@ public class Boss {
   public int mode;
   boolean ready;
   int fcounter;
+  boolean descent;
+  boolean ascent;
   int HP, mHP;
   int x, y;
   public Boss(int v, int HP_) {
@@ -11,12 +13,18 @@ public class Boss {
     mHP = HP;
     mode = 0;
     x = width+300;
+    ascent = true;
     y = height/2;
   }
   void isHit() {
     for(int i = 0; i < projectiles.size(); i++) {
-      if(ready && projectiles.get(i).xPos >= width-254 && projectiles.get(i).friendly) {
+      if(ver == 0 && ready && projectiles.get(i).xPos >= width-254 && projectiles.get(i).friendly) {
         HP -= projectiles.remove(i).damage;
+      }
+      if(ver == 1 && ready) {
+        if(projectiles.get(i).friendly && dist(x, y, projectiles.get(i).xPos, projectiles.get(i).yPos) <= 200){
+          HP -= projectiles.remove(i).damage;
+        }
       }
     }
   }
@@ -84,12 +92,24 @@ public class Boss {
       if(x >= width-secondboss.width) {
         x-=10;
       }else {
+        ready = true;
         fcounter++;
-        if(fcounter < 100) {
-          y+=5;
-        }
-        if(fcounter >= 100 && fcounter < 200) {
+        println(ascent);
+        println(descent);
+        println(y);
+        if(ascent == true && y > height/2-200) {
           y-=5;
+        }
+        if(ascent == true && y <= height/2-200) {
+          descent = true;
+          ascent = false;
+        }
+        if(descent == true && y < height/2+200) {
+          y += 5;
+        }
+        if(descent == true && y >= height/2+200) {
+          descent = false;
+          ascent = true;
         }
         if(fcounter % 20 == 0) {
           Projectile e = new Projectile();
@@ -109,12 +129,11 @@ public class Boss {
   void render() {
     if(ver == 0) {
       image(mothership, x, y);
-      isHit();
-      fire();
     }
     if(ver == 1) {
       image(secondboss, x, y);
-      fire();
     }
+    isHit();
+    if(!specialAnim){fire();}
   }
 }

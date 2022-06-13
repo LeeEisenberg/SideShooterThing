@@ -12,7 +12,7 @@ public class EnemyWave {
   
   public EnemyWave(int mode) {
     if(level != 0 && level % 5 == 0) {
-      boss = new Boss(1, 1000+level*100);
+      boss = new Boss(level%2, 1000+level*100);
       bossTime = true;
     }
     fleet = new ArrayList<SpaceShip>();
@@ -99,7 +99,6 @@ public class EnemyWave {
     
   public void move(){
     if(bossTime) {
-      boss.render();
       rectMode(CENTER);
       fill(0, 0, 255);
       rect(width/2, 900, 500*boss.HP/boss.mHP, 50);
