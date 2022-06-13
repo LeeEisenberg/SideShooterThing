@@ -12,7 +12,7 @@ public class EnemyWave {
   
   public EnemyWave(int mode) {
     if(level != 0 && level % 5 == 0) {
-      boss = new Boss(1, 1000+level*100);
+      boss = new Boss(level%2, 1000+level*100);
       bossTime = true;
     }
     fleet = new ArrayList<SpaceShip>();
