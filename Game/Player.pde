@@ -31,6 +31,7 @@ public class Player extends SpaceShip {
     move(dX, dY);
   }
   void render() {
+    tint(255,255);
     imageMode(CENTER);
     if(power1Time > 0) {
       tint(100, 100, 255);

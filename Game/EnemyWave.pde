@@ -4,12 +4,16 @@ import java.util.Arrays;
 public class EnemyWave {
   public ArrayList<SpaceShip> fleet;
   private ArrayDeque<float[]> flightPlan;
+  private Boss boss;
+  public int mode;
   
   public EnemyWave(){
     this((int) random(4));
   }
   
   public EnemyWave(int mode) {
+    boss = new Boss(0, 500+(level-1)*100);
+    this.mode = mode;
     fleet = new ArrayList<SpaceShip>();
     if(mode == 2) {
       fleet.add(new SpaceShip(1600, 200, 75, 50*(1+(level/10.0)), 1, 1));
@@ -65,6 +69,12 @@ public class EnemyWave {
   }
     
   public void move(){
+    if(mode == 2) {
+      boss.render();
+      rectMode(CENTER);
+      fill(0, 0, 255);
+      rect(width/2, 900, 100-boss.HP, 50);
+    }
     float[] temp;
     temp = flightPlan.poll();
     for (int x = fleet.size()-1; x >= 0; x--){

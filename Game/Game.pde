@@ -19,6 +19,7 @@ PImage[] lightning;
 PImage light;
 PImage[] rockets;
 PImage[] explosions;
+PImage mothership;
 SoundFile cannonyell;
 SoundFile sundaybest;
 boolean specialAnim;
@@ -26,6 +27,7 @@ int frame;
 boolean startMenu;
 boolean restartMenu;
 boolean loadoutMenu;
+
 
 void setup(){
   frameRate(60);
@@ -38,6 +40,8 @@ void setup(){
   wave = new EnemyWave((int)random(3));
   projectiles = new ArrayList<Projectile>();
   level = 0;
+  mothership = loadImage("sprites/mother.png");
+  
   sprites = new PImage[4];
   for(int i = 0; i < 4; i++) {
       sprites[i] = loadImage("sprites/proj"+(i+1)+".png");
@@ -59,6 +63,11 @@ void setup(){
   for(int i = 0; i < 12; i++) {
     explosions[i] = loadImage("sprites/explode"+(i+1)+".png");
   }
+  lightning = new PImage[10];
+  for(int i = 0; i < 10; i++) {
+    lightning[i] = loadImage("sprites/light"+(i+1)+".png");
+    lightning[i].resize(lightning[i].width*5, lightning[i].height*5);
+  }
   background = loadImage("sprites/background.jpg");
   background.resize(width,height);
   specialAnim = false;
@@ -67,6 +76,7 @@ void setup(){
 }
 void draw(){
     if(!startMenu && !restartMenu && !loadoutMenu){
+      tint(255,255);
       rectMode(CORNER);
       textAlign(LEFT);
       image(background, 750, 500);
