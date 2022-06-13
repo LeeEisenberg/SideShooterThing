@@ -226,6 +226,10 @@ void draw(){
     text("Restart", width/4, height*7/12+17);
     text("Exit", width*3/4, height*7/12+17);
   }
+  if (!startMenu && !restartMenu && !loadoutMenu){
+    fill(255);
+    text("Highest Level: "+hiScore, 10, 980);
+  }
 }
  
 void keyPressed() {
@@ -242,15 +246,18 @@ void keyPressed() {
   if(key == 'f') {
     player.secondary.fire(player.x, player.y, true);
   }
-  if(key == 'l') {
-    level++;
-    wave = new EnemyWave(level);
-  }
   if(key == '1') {
     player.HP = 100;
   }
   if(key == '2') {
+    player.HP = 0;
+  }
+  if(key == '3') {
     player.cannon.charge = 100;
+  }
+  if(key == '4'){
+    level++;
+    wave = new EnemyWave();
   }
 } 
 
@@ -287,6 +294,7 @@ void mousePressed(){
   if(restartMenu) {
     if(mouseY <= height*7/12+50 && mouseY >= height*7/12-50) {
       if(mouseX <= width/4 +150 && mouseX >= width/4 - 150) {
+        hiScore = level;
         wave = new EnemyWave();
         projectiles = new ArrayList<Projectile>();
         level = 0;
@@ -300,7 +308,7 @@ void mousePressed(){
       }
     }
   }
-  if(!startMenu || !restartMenu || !loadoutMenu){
+  if(!startMenu && !restartMenu && !loadoutMenu){
     if (mouseButton == LEFT){
       player.weapon.fire(player.x, player.y, true);
       pew.play();
