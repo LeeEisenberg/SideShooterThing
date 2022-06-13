@@ -35,6 +35,7 @@ void setup(){
   size(1500,1000);
   textSize(100);
   startMenu = true;
+  frame = 0;
   player = new Player(1);
   toExplode = new ArrayDeque();
   gonnaexplodethis = new ArrayList<Explosion>();
@@ -79,6 +80,7 @@ void setup(){
 }
 void draw(){
     if(!startMenu && !restartMenu && !loadoutMenu){
+      player.cannon.charge = 100;
       tint(255,255);
       rectMode(CORNER);
       textAlign(LEFT);
@@ -161,22 +163,20 @@ void draw(){
             gonnaexplodethis.remove(e);
           }
         }
+      }
     if(specialAnim) {
       frameRate(15);
       frame = (frame)%10;
       flash = special[frame];
       image(flash, player.x, player.y);
-     
-      
       frame++;
-      if(frame == 10) {
+      if(frame >= 10) {
         specialAnim = false;
         frameRate(60);
       }
       
       }
     }
-  }
   if(startMenu) {
     background(0);
     fill(255);
