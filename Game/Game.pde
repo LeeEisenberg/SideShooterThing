@@ -250,9 +250,12 @@ void keyPressed() {
     player.HP = 100;
   }
   if(key == '2') {
-    player.cannon.charge = 100;
+    player.HP = 0;
   }
   if(key == '3') {
+    player.cannon.charge = 100;
+  }
+  if(key == '4'){
     level++;
     wave = new EnemyWave();
   }
